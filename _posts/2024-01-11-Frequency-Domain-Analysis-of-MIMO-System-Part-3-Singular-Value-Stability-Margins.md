@@ -6,6 +6,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
+image: /assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-3-Singular-Value-Stability-Margins.assets/RD_Bode.png
 ---
 
 ## **1. Motivation**

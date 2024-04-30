@@ -7,6 +7,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
+image: /assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/6.jpg
 ---
 
 ## **1. Plant Model**

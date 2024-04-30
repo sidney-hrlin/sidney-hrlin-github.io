@@ -7,6 +7,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
+image: /assets/img/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/mrac_test.png
 ---
 
 ## Motivation
@@ -16,8 +17,6 @@ tracking performance, as well as robustness to model uncertainties, control fail
 However, in the presence of matched uncertainties, a deterioration of the system nominal(baseline) control is
 inevitable. We pose the question:"Can we restore a given nominal closed-loop performance of the system, while
 operating under matched uncertainties?"
-
-![mrac_test](/assets/img/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/mrac_test.png)
 
 ## Problem Setup
 

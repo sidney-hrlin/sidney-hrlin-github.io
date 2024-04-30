@@ -7,6 +7,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
+image: /assets/img/2024-04-03-Linear-Quadratic-Optimal-Tracking-for-Time-Varying-Nonlinear-System.assets/Bellman_flow_chart.png
 ---
 
 ## System Linearization

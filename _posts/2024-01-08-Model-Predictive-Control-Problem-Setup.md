@@ -7,6 +7,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
+image: /assets/img/2024-01-08-Model-Predictive-Control-Problem-Setup.assets/mpc_illustration.png
 ---
 
 ## Linearization

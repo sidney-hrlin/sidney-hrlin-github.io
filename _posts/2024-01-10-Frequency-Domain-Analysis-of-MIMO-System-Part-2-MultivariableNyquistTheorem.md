@@ -6,6 +6,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
+image: /assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v2.jpeg
 ---
 
 ## **1. Determinant of Return Difference**
