@@ -10,6 +10,7 @@ image: /assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-3-Si
 ---
 
 > *Good stability margins do not imply robustness, must look at distance to (-1,0)!*
+{: .prompt-info }
 
 ## Motivation
 
