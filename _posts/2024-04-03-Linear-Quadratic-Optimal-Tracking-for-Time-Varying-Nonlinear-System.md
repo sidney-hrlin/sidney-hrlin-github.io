@@ -169,11 +169,12 @@ $$
 $$
 
 Inserting the optimal $u^{\ast}$ to HJB equation
+
 $$
 \begin{aligned}
 0 &= l+x^T\dot P_{xx}x+2\dot p_x^Tx+\dot p_0+2(P_{xx}x+p_x)^T[Ax+Bu+c] \\
 &= x^TQ_tx+u^TR_tu+2x^TN_tu+x_r^TQ_tx_r+u_r^TR_tu_r+2x_r^TN_tu_r-2(Q_tx_r+N_tu_r)^Tx-2(R_tu_r+N_t^Tx_r)^T(Kx+k)+x^T\dot P_{xx}x+2\dot p_x^Tx+\dot p_0+2(P_{xx}x+p_x)^T[Ax+B(Kx+k)+c]\\
-&= x^TQ_tx+(Kx+k)^TR_t(Kx+k)+2x^TN_t(Kx+k)+x_r^TQ_tx_r+u_r^TR_tu_r+2x_r^TN_tu_r-2(Q_tx_r+N_tu_r)^Tx-2(R_tu_r+N_t^Tx_r)^T(Kx+k)+x^T\dot P_{xx}x+2\dot p_x^Tx+\dot p_0+2(P_{xx}x+p_x)^T[(A+BK)x+Bk+c] \\
+&= x^TQ_tx+(Kx+k)^TR_t(Kx+k)+2x^TN_t(Kx+k)+x_r^TQ_tx_r+u_r^TR_tu_r+2x_r^TN_tu_r-2(Q_tx_r+N_tu_r)^Tx-2(R_tu_r+N_t^Tx_r)^T(Kx+k)+x^T\dot P_{xx}x+2\dot p_x^Tx+\dot p_0+2(P_{xx}x+p_x)^T[(A+BK)x+Bk+c]\\
 \\
 -x^T\dot P_{xx}x-2\dot p_x^Tx-\dot p_0
 &= x^TQ_tx+x^TK^TR_tKx+2k^TR_tKx+k^TR_tk+2x^TN_tKx+2x^TN_tk+x_r^TQ_tx_r+u_r^TR_tu_r+2x_r^TN_tu_r-2(Q_tx_r+N_tu_r)^Tx-2(R_tu_r+N_t^Tx_r)^TKx-2(R_tu_r+N_t^Tx_r)^Tk+2x^TP_{xx}(A+BK)x+2x^TP_{xx}(Bk+c)+2p_x^T(A+BK)x+2p_x^T(Bk+c)\\
