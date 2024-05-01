@@ -10,9 +10,11 @@ mermaid: true
 image: /assets/img/2024-04-03-Linear-Quadratic-Optimal-Tracking-for-Time-Varying-Nonlinear-System.assets/Bellman_flow_chart.png
 ---
 
+In this page, we derived the analytical solution for generalized tracking problem with quadratic cost of a time-varying nonlinear system.
+
 ## System Linearization
 
-Consider a time-varying non-linear dynamical system
+Consider a time-varying nonlinear dynamical system
 
 $$
 \dot x = f(t,x,u)

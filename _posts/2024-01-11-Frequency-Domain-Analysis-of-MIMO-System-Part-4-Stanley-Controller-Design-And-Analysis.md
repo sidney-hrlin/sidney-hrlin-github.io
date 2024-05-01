@@ -10,7 +10,9 @@ mermaid: true
 image: /assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/6.jpg
 ---
 
-## **1. Plant Model**
+In this page, we show how to design a Stanley controller with time domain and frequency domain specifications for a vehicle lateral dynamic MIMO system.
+
+## Plant Model
 The front axle based error state vehicle lateral dynamic model is used to run simulation and analyze tracking performance and robustness of stanley controller. 
 
 $$
@@ -34,16 +36,16 @@ $$
 next, introduce a second-order actuator for the front wheel steering angle 
 
 $$
-\begin{align}
+\begin{aligned}
 \delta &= \frac {w^2_n}{s^2 + 2 \eta w_n + w^2_n } \delta_c \\
 \ddot{\delta} &= -2\eta w_n\dot{\delta} + w^2_n(\delta_c - \delta)
-\end{align}
+\end{aligned}
 $$
 
 The plant model with actuator dynamics could be express as follow
 
 $$
-\begin{align}
+\begin{aligned}
 \underbrace{\begin{bmatrix} \dot{e}_1\\\ddot{e}_1\\\dot{e}_2\\\ddot{e}_2\\ \dot{\delta} \\ \ddot{\delta}\end{bmatrix}}_{\dot{x}_p} &=
 \underbrace{ \begin{bmatrix}
 0 & 1 & 0 & 0 & 0 & 0 \\
@@ -59,21 +61,21 @@ $$
 \underbrace{\begin{bmatrix} e_1\\e_2\\\dot{e}_2\end{bmatrix}}_{y} &= \underbrace{ \begin{bmatrix}1&0&0&0&0&0\\0&0&1&0&0&0\\0&0&0&1&0&0\end{bmatrix}}_{C_p}
 \underbrace{\begin{bmatrix} e_1\\\dot{e}_1\\e_2\\\dot{e}_2\\\delta\\\dot{\delta}\end{bmatrix}}_{x_p}+\underbrace{ \begin{bmatrix}0&0\\0&0\\0&0\end{bmatrix}}_{D_p}
 \underbrace{\begin{bmatrix} \delta_c \\ \dot{\psi_{des}}\end{bmatrix}}_{u}
-\end{align}
+\end{aligned}
 $$
 
-## **2. Stanley Controller Model**
+## Stanley Controller Model
 The control law of stanley controller is:
 
 $$
-\begin{align}\delta &= k_{openloop} \cdot arctan( \kappa L) - arctan(k_{e_1}\cdot \frac{e_1}{V_x}) - k_{e_2}\cdot e_2-k_{\dot{e}_2}\cdot \dot{e}_2\\
-& \approx k_{openloop} \cdot \kappa L - \frac{k_{e_1}}{V_x}\cdot e_1 - k_{e_2}\cdot e_2-k_{\dot{e}_2}\cdot \dot{e}_2\end{align}
+\begin{aligned}\delta &= k_{openloop} \cdot arctan( \kappa L) - arctan(k_{e_1}\cdot \frac{e_1}{V_x}) - k_{e_2}\cdot e_2-k_{\dot{e}_2}\cdot \dot{e}_2\\
+& \approx k_{openloop} \cdot \kappa L - \frac{k_{e_1}}{V_x}\cdot e_1 - k_{e_2}\cdot e_2-k_{\dot{e}_2}\cdot \dot{e}_2\end{aligned}
 $$
 
 The common state space representation of stanley controller could be expressed as 
 
 $$
-\begin{align}
+\begin{aligned}
 \underbrace{\begin{bmatrix} \dot x_{c_1} \\ \dot x_{c_2} \end{bmatrix}}_{\dot x_c} &=
 \underbrace{\begin{bmatrix} 0 & 0 \\ 0 & 0\end{bmatrix}}_{A_c} 
 \underbrace{\begin{bmatrix} x_{c_1} \\  x_{c_2}\end{bmatrix}}_{x_c} + 
@@ -89,10 +91,10 @@ $$
 \underbrace{\begin{bmatrix} e_1\\e_2\\\dot{e}_2\end{bmatrix}}_{y} + 
 \underbrace{\begin{bmatrix} k_{ol}L & 0 \\ 0 & 1 \end{bmatrix}}_{D_{c_2}} 
 \underbrace{\begin{bmatrix} \kappa \\ \dot{\psi}_{des} \end{bmatrix}}_{r}
-\end{align}
+\end{aligned}
 $$
 
-## **3. Stanley Controller Design Chart**
+## Stanley Controller Design Chart
 
 Stability and Performance Specifications
 
@@ -114,7 +116,7 @@ Stability and Performance Specifications
 | Heading Error(rad)            | less than 0.17 rad (10 deg) |
 | Heading Rate Error (rad/s)    | less than 0.1 rad/s         |
 
-### 3.1 Design Without Actuator Dynamics(Actuator Dynamics as Equivalent Uncertainty)
+### Design Without Actuator Dynamics(Actuator Dynamics as Equivalent Uncertainty)
 
 | **Design Heading Gain (with a fix lateral gain)**            |
 | ------------------------------------------------------------ |
@@ -149,7 +151,7 @@ Stability and Performance Specifications
 | ![5](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/5.jpg)   |
 | ![6](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/6.jpg)   |
 
-### 3.2 Design With Actuator Dynamics (Model Pure Delay as Equivalent Uncertainty)
+### Design With Actuator Dynamics (Model Pure Delay as Equivalent Uncertainty)
 
 | **Design Lateral Gain (with zero heading gain)**             |
 | ------------------------------------------------------------ |
@@ -224,7 +226,7 @@ Stability and Performance Specifications
 | Robust to Actuator              | $e^{-t_d s}\frac{w^2_n}{s^2 + 2 \eta w_n s + w^2_n} \text{ ,where } t_d = 0.1 ,\eta = 1.0, w_n = 6.0$ |
 | Robust to Extra Delay (s)       | $t_{\text{extra delay}} = 0.1s$                              |
 
-### 3.3 Simulation Results
+### Simulation Results
 
 |                   Scenario                    | U-turn | U-turn | Right-turn | Right-turn | Left-turn | Left-turn | Straight | Straight |
 | :-------------------------------------------: | :----: | :----: | :--------: | :--------: | :-------: | --------- | -------- | -------- |
@@ -238,7 +240,7 @@ Stability and Performance Specifications
 | :----------------------------------------------------------: |
 | ![simu1](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/simu1.jpg) |
 
-### 3.4 Road Test Results
+### Road Test Results
  
 | Scenario                             | U-turn  | U-turn  | U-turn  | Right-turn | Right-turn | Right-turn | Left-turn | Left-turn | Left-turn | Straight | Straight | Straight |
 | ------------------------------------ | ------- | ------- | ------- | ---------- | ---------- | ---------- | --------- | --------- | --------- | -------- | -------- | -------- |

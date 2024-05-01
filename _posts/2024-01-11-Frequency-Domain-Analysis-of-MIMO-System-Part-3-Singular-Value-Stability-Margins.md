@@ -9,30 +9,30 @@ mermaid: true
 image: /assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-3-Singular-Value-Stability-Margins.assets/RD_Bode.png
 ---
 
-## **1. Motivation**
-
 > *Good stability margins do not imply robustness, must look at distance to (-1,0)!*
+
+## Motivation
 
 Multi-variable Nyquist Theorem only determines absolute stability of a system, it does not indicate the **degree of robustness** for a MIMO system. To determine the degree of robustness, we determine how nearly singular the return difference is by computing its singular values versus frequency. Thus the stability robustness of a multi-variable system can be observed by minimum singular values of its return difference matrix, $I+L(s)$,at some frequency $s = jw_0$.
 
-## **2. Singular Value**
+## Singular Value
 
 Singular values of a matrix are non-negative real numbers. The maximum singular value of a matrix represents how “big” the matrix is or how large the “gain” of the matrix is. The minimum singular value represents how nearly singular the matrix is. 
 
 **properties:**
 
 $$
-\begin{align}
+\begin{aligned}
 &\overline{\sigma}(A) = \max_{x\neq0}\frac{||Ax||_2}{||x||_2} = ||A||_2\\
 &\underline{\sigma}(A) = \min_{x\neq0}\frac{||Ax||_2}{||x||_2}\\ \\
 &\overline{\sigma}(A^{-1}) = \frac{1}{\underline{\sigma}(A)} \text{  and }
 \underline{\sigma}(A^{-1}) = \frac{1}{\overline{\sigma}(A)} \\ \\
 &\text{If matrices U and V are unitary:} \\
 &\sigma_i(A) = \sigma_i(UA) = \sigma_i(AV) \\
-\end{align}
+\end{aligned}
 $$
 
-## **3. $A+B$ Argument**
+## $A+B$ Argument
 
 The minimum singular value $\underline{\sigma}(A)$ measures the near singularity of the matrix $A$.  Assume that the matrix $A+B$ is singular, we have
 
@@ -58,7 +58,7 @@ $$
 
 With properties of singular values, the $A+B$ argument is proved.
 
-## **4. Uncertainty Model**
+## Uncertainty Model
 
 |                            |                **Additive Uncertainty Model**                |             **Multiplicative Uncertainty Model**             |
 | :------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
@@ -67,17 +67,17 @@ With properties of singular values, the $A+B$ argument is proved.
 | **Loop Transfer Function** |                     $$L_u = K G \Delta$$                     |                $$L_u = K G (I_u + \Delta_u)$$                |
 |   **Return Difference**    |               $$I_u + L_u = I_u + K G \Delta$$               |          $$I_u + L_u = I_u + K G (I_u + \Delta_u)$$          |
 
-## **5. Gain and Phase Margins For Multivariable Systems at Plant Input**
+## Gain and Phase Margins For Multivariable Systems at Plant Input
 
 We want to find the smallest uncertainty $\Delta$ that destabilizes the nominal system.
 
 The return difference matrix of **Additive Uncertainty Model** could be expressed as:
 
 $$
-\begin{align}
+\begin{aligned}
 I_u + KG\Delta &= I_u + L_u\Delta \\
 &=[(\Delta^{-1}-I_u)(I_u+L_u)^{-1}+I_u](I_u+L_u)\Delta
-\end{align}
+\end{aligned}
 $$
 
 Assume controller $K(s)$ stabilizes the nominal plant, and since $\Delta$ is diagonal we have 
@@ -95,14 +95,14 @@ $$
 To be nonsingular:
 
 $$
-\begin{align}
+\begin{aligned}
 \underline{\sigma}(A) &> \overline{\sigma}(B)\\
 \underline{\sigma}(I_u) &> \overline{\sigma}((\Delta^{-1}-I_u)(I_u+L_u)^{-1})\\
 1 &>  \overline{\sigma}((\Delta^{-1}-I_u)(I_u+L_u)^{-1})\\ 
 1 & \geq  \underbrace{\overline{\sigma}(\Delta^{-1}-I_u)  \overline{\sigma}((I_u+L_u)^{-1})}_{\text{note that we lose structure here}}\\
 \frac{1}{ \overline{\sigma}((I_u+L_u)^{-1})} &\geq \overline{\sigma}(\Delta^{-1}-I_u) \\
 \underline{\sigma}(I_u+L_u) &\geq \overline{\sigma}(\Delta^{-1}-I_u)
-\end{align}
+\end{aligned}
 $$
 
 Let $\alpha_{\sigma} = \displaystyle\min_{w}{ \underline{\sigma}(I_u+L_u(jw))}$,we have
@@ -128,7 +128,7 @@ $$
 Phase Margin(zero gain uncertainty $k_i = 0$)
 
 $$
-\begin{align}
+\begin{aligned}
 \alpha_{\sigma} \geq \overline{\sigma}(\Delta^{-1}-I_u)
 & = &&|\frac{1}{k_ie^{j\phi_i}}-1| = |e^{-j\phi_i}-1| = |cos(\phi_i)-1-jsin(\phi_i)|\\
 & = &&\sqrt{(cos(\phi_i)-1)^2+sin^2(\phi_i)}\\
@@ -137,7 +137,7 @@ $$
 & = &&\pm2sin(\frac{\phi_i}{2})\\
 &\Downarrow \\\\
 \phi = \pm2sin^{-1}(\frac{\alpha_{\sigma}}{2})
-\end{align}
+\end{aligned}
 $$
 
 Likewise, the return difference matrix of **Multiplicative Uncertainty Model** could be expressed as:
@@ -164,11 +164,11 @@ $$
 To be nonsingular:
 
 $$
-\begin{align}
+\begin{aligned}
 \underline{\sigma}(A) &> \overline{\sigma}(B)\\
 \underline{\sigma}(L_u^{-1}+I_u) &> \overline{\sigma}(\Delta_u)\\
 \underline{\sigma}(L_u^{-1}+I_u) &> \overline{\sigma}(\Delta - I_u)\\
-\end{align}
+\end{aligned}
 $$
 
 Let $\beta_{\sigma} = \displaystyle\min_{w}{ \underline{\sigma}(I_u+L_u^{-1}(jw))}$, we have
@@ -188,7 +188,7 @@ $$
 Phase Margin(zero gain uncertainty $k_i = 0$):
 
 $$
-\begin{align}
+\begin{aligned}
 \beta_{\sigma} \geq \overline{\sigma}(\Delta-I_u)
 & = && |k_ie^{j\phi_i}-1| = |e^{j\phi_i}-1| = |cos(\phi_i)-1+jsin(\phi_i)|\\
 & = &&\sqrt{(cos(\phi_i)-1)^2+sin^2(\phi_i)}\\
@@ -197,7 +197,7 @@ $$
 & = &&\pm2sin(\frac{\phi_i}{2})\\
 &\Downarrow \\\\
 \phi = \pm2sin^{-1}(\frac{\beta_{\sigma}}{2})
-\end{align}
+\end{aligned}
 $$
 
 **Summary of Singular Value Margins:**
@@ -212,7 +212,7 @@ $$
 |   **Phase Margin** $PM$    |         $$\pm2sin^{-1}(\frac{\alpha_{\sigma}}{2})$$          |          $$\pm2sin^{-1}(\frac{\beta_{\sigma}}{2})$$          |
 |    **Best Gain Margin**    |              $$[-6 \quad +\infty] \text{ dB}$$               |              $$[-\infty \quad +6] \text{ dB}$$               |
 |   **Best Phase Margin**    |                       $$\pm60^\circ$$                        |                       $$\pm60^\circ$$                        |
-| **Singular Value Margins** | $$\begin{align}GM_{SV} = GM_{I+L} \cup GM_{I+L^{-1}}\\PM_{SV} = PM_{I+L} \cup PM_{I+L^{-1}}\end{align}$$ | $$\begin{align}GM_{SV} = GM_{I+L} \cup GM_{I+L^{-1}}\\PM_{SV} = PM_{I+L} \cup PM_{I+L^{-1}}\end{align}$$ |
+| **Singular Value Margins** | $$\begin{aligned}GM_{SV} = GM_{I+L} \cup GM_{I+L^{-1}}\\PM_{SV} = PM_{I+L} \cup PM_{I+L^{-1}}\end{aligned}$$ | $$\begin{aligned}GM_{SV} = GM_{I+L} \cup GM_{I+L^{-1}}\\PM_{SV} = PM_{I+L} \cup PM_{I+L^{-1}}\end{aligned}$$ |
 
 **The Control Design Dilemma:**
 

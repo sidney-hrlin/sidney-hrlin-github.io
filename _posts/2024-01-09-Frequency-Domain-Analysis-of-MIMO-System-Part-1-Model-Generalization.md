@@ -11,7 +11,7 @@ image: /assets/img/2024-01-09-Frequency-Domain-Analysis-of-MIMO-System-Part-1-Mo
 
 In this page, we present a generalized state-space linear-time-invariant plant and controller models for control design and frequency domain analysis  that will be used in other sections. Models for closed-loop simulation and frequency domain analysis at both plant input and plant output are also derived.
 
-## **1. System Modeling** 
+## System Modeling
 
 Our goal is to convert system dynamics and controllers into a common framework for analysis and comparison.
 
@@ -33,10 +33,10 @@ $$
 and 
 
 $$
-\begin{align}
+\begin{aligned}
 A_p \in R^{n_x \cdot n_x} , B_p\in R^{n_x \cdot n_u}  \\  
 C_p \in R^{n_y \cdot n_x} ,D_p\in R^{n_y \cdot n_u}  \\
-\end{align}
+\end{aligned}
 $$
 
 The **controller model** is:
@@ -58,46 +58,46 @@ $$
 and 
 
 $$
-\begin{align}
+\begin{aligned}
 &A_c \in R^{n_{x_c}\cdot n_{x_c}}, 
 \quad &&B_{c_1}\in R^{n_{x_c} \cdot n_y},\quad &&& B_{c_2}\in R^{n_{x_c} \cdot n_r}   \\
 &C_c \in R ^{n_u \cdot n_{x_c}},
 \quad &&D_{c_1}\in R^{n_u \cdot n_y},\quad &&& D_{c_2}\in R^{n_u \cdot n_r}
-\end{align}
+\end{aligned}
 $$
 
 The plant and controller is connected as shown in following block diagram:
 
 ![generalized_model_block_diagram](/assets/img/2024-01-09-Frequency-Domain-Analysis-of-MIMO-System-Part-1-Model-Generalization.assets/generalized_model_block_diagram.jpeg)
 
-## **2. Derivation of Closed-loop Dynamics:**
+## Derivation of Closed-loop Dynamics
 rewrite $u$ by replacing plant output $y$, we have 
 
 $$
-\begin{align}
+\begin{aligned}
 &&u&=C_c x_c + D_{c_1}y+ D_{c_2}r\\
 &&  &= C_c x_c + D_{c_1}(C_p x + D_p u) + D_{c_2}r\\
 &&   &= C_c x_c +D_{c_1}C_px +D_{c_1}D_pu + D_{c_2}r\\ \\
 &&  \underbrace{(I-D_{c_1}D_p)}_{Z} u &=  C_c x_c +D_{c_1}C_px  + D_{c_2}r
 \\
 && u &= Z^{-1}(C_c x_c +D_{c_1}C_px  + D_{c_2}r)
-\end{align}
+\end{aligned}
 $$
 
 feed $u$ into the plant, we have:
 
 $$
-\begin{align}
+\begin{aligned}
 \dot{x} &= A_p x + B_p Z^{-1}(C_cx_c + D_{c_1}C_px + D_{c_2}r) \\
 &=A_px + B_pZ^{-1}C_cx_c + B_pZ^{-1}D_{c_1}C_px + B_pZ^{-1}D_{c_2}r \\
 &=(A_p + B_pZ^{-1}D_{c_1}C_p)x + B_pZ^{-1}C_cx_c + B_pZ^{-1}D_{c_2}r
-\end{align}
+\end{aligned}
 $$
 
 likewise:
 
 $$
-\begin{align}
+\begin{aligned}
 \dot{x}_c &= A_cx_c + B_{c_1}(C_px+D_pu) +B_{c_2}r\\
 &=A_cx_c  + B_{c_1}C_px +B_{c_1}D_pZ^{-1}(C_cx_c+D_{c_1}C_px+D_{c_2}r)+B_{c_2}r\\
 &=(A_c+B_{c_1}D_pZ^{-1}C_c)x_c + (B_{c_1}C_p+B_{c_1}D_pZ^{-1}D_{c_1}C_p)x+(B_{c_1}D_pZ^{-1}D_{c_2}+B_{c_2})r\\
@@ -106,26 +106,26 @@ y &= C_px+D_pu \\
 &= C_px + D_p Z^{-1}(C_cx_c+D_{c_1}C_px +D_{c_2}r)+B_{c_2}r\\
 &= (C_p  + D_p Z^{-1}D_{c_1}C_p)x + D_p Z^{-1}C_cx_c + D_p Z^{-1}B_{c_2}r\\
 &=(I+D_pZ^{-1}D_{c_1})C_px + D_p Z^{-1}C_cx_c + D_p Z^{-1}B_{c_2}r
-\end{align}
+\end{aligned}
 $$
 
 Let us define a augmented state vector $x_a$ in the form: 
 
 $$
-\begin{align}
+\begin{aligned}
 x_a = \begin{bmatrix}
 x\\x_c
 \end{bmatrix}
-\end{align}
+\end{aligned}
 $$
 
 Then, the closed-loop dynamics can be written as: 
 
 $$
-\begin{align}
+\begin{aligned}
 \begin{bmatrix}\dot{x}\\\dot{x}_c\end{bmatrix} &=&&\underbrace{ \begin{bmatrix}A_p+B_pZ^{-1}D_{c_1}C_p & B_pZ^{-1}C_c \\ B_{c_1}(I+D_pZ^{-1}D_{c_1})C_p & A_c+B_{c_1}D_pZ^{-1}C_c\end{bmatrix}}_{A_{cl}}\begin{bmatrix}x\\x_c\end{bmatrix} + \underbrace{ \begin{bmatrix}B_pZ^{-1}D_{c_2}\\B_{c_1}D_pZ^{-1}D_{c_2}+B_{c_2}\end{bmatrix}}_{B_{cl}}r\\\\
 y &=&& \underbrace{ \begin{bmatrix}(I+D_pZ^{-1}D_{c_1})C_p & D_pZ^{-1}C_c\end{bmatrix}}_{C_{cl}}\begin{bmatrix}x\\ x_c\end{bmatrix}+\underbrace{ \begin{bmatrix}D_pZ^{-1}D_{c_2}\end{bmatrix}}_{D_{cl}}r
-\end{align}
+\end{aligned}
 $$
 
 or equivalently
@@ -137,7 +137,7 @@ y&= C_{cl}x_a+D_{cl}r
 \end{aligned}
 $$
 
-## **3. Loop Gain at Plant Input & Plant Output**
+## Loop Gain at Plant Input and Plant Output
 
 The loop gain model at the plant input is formed to support frequency domain analysis of the design at the plant input loop break point. In this model, we treat the control input to the plant as the model input $u_{in}$ .The control output from the controller becomes the model output $u_{out}$ .Also,we neglect the command vector $r$. In this case, the plant and controller models are:
 
@@ -233,9 +233,9 @@ $$
 RD_{y} = \frac{y_{in} - y_{out}}{y_{in}}=  \frac{y_{in} - (-L_{y}y_{in})}{y_{in}} = I+L_{y}
 $$
 
-## **4. Summary**
+## Summary
 
-**4.1. Closed-loop Dynamics:**
+### Closed-loop Dynamics
 
 State space model:
 
@@ -257,7 +257,7 @@ D_{cl} &=&&\begin{bmatrix}D_pZ^{-1}D_{c_2}\end{bmatrix}
 \end{aligned}
 $$
 
-**4.2. Characteristic at Plant Input and Plant Output** 
+### Characteristic at Plant Input and Plant Output
 
 |                                      |                       **Plant Input**                        |                       **Plant Output**                       |
 | :----------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |

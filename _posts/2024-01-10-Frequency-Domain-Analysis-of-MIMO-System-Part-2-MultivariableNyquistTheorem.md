@@ -9,7 +9,9 @@ mermaid: true
 image: /assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v2.jpeg
 ---
 
-## **1. Determinant of Return Difference**
+In this page, we show how to use **Multi-variable Nyquist Theorem** to analysis robustness of a MIMO system.
+
+## Determinant of Return Difference
 
 The determinant of return difference matrix could be express as 
 
@@ -78,7 +80,7 @@ $$
 det(I+L) = \frac{\phi_{cl}(s)}{\phi_{ol}(s)}
 $$
 
-## **2. Multi-variable Nyquist Theorem**
+## Multi-variable Nyquist Theorem
 
 Multi-variable Nyquist criterion is derived from **Cauchy's argument principle**, it gives a '**yes or no**' answer to the stability question of closed-loop MIMO system.
 
@@ -107,10 +109,10 @@ Using argument principle, it’s easy to show:
 If $f(s)$ is factored where $f(s) = f_1(s)\cdot f_2(s) $ ,then
 
 $$
-\begin{align}
+\begin{aligned}
 N(0,f(s),D_R)&=N(0,f_1(s),D_R)+N(0,f_2(s),D_R)\\
 &=(Z_1-P_1) +(Z_2-P_2)=Z-P
-\end{align}
+\end{aligned}
 $$
 
 Suppose a zero $D$ matrix, we have 
@@ -141,17 +143,17 @@ Hence proved
 
 **IMPORTANT:** Fundamental to this approach is the assumption that the nominal closed-loop system is stable.
 
-## **3. Apply to Lateral Control Problem**
+## Apply to Lateral Control Problem
 
 Since the plant model and controller model is non-square in lateral control problem, so stability analysis should be conducted at the loop break of minimum dimension. In this case, plant input is selected as the loop break point.
 
-**3.1. How time delay affect closed-loop stability?**
+### How time delay affect closed-loop stability?
 
 A significant deterioration in both gain and phase margin could be observed!
 
 ![nyquist_1](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_1.jpeg)    						Comparison between stability of nominal closed-loop system and system with delay
 
-**3.2. How much pure delay will destabilized the closed-loop system?**
+### How much pure delay will destabilized the closed-loop system?
 
 Max delay acceptable by closed-loop system could be found where encirclement change as we increase delay time.
 
@@ -169,7 +171,7 @@ Max delay acceptable by closed-loop system could be found where encirclement cha
 |            25            | ![nyquist_v25](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v25.jpeg) |        0.4        |
 |            30            | ![nyquist_v30](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v30.jpeg) |       0.35        |
 
-**3.3. How actuator dynamics affect closed-loop system?**
+### How actuator dynamics affect closed-loop system?
 
 First, construct a actuator model from road test data
 
@@ -205,6 +207,6 @@ Then, we add actuator dynamics into plant model, reconnect it with controller an
 |              25              | ![nyquist_act25](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act25.jpeg) |                 0.39                  |         1.91         |          5.55          |          0.04           |
 |              30              | ![nyquist_act30](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act30.jpeg) |               unstable                |       unstable       |        unstable        |        unstable         |
 
-## **4. Summary**
+## Summary
 
 The Multi-variable Nyquist Criterion gives a 'yes or no' answer to the stability question of a MIMO system. Understanding it leads to important understanding of the robustness analysis tests used to analyze model uncertainties. In addition, stability margins for MIMO systems can be derived using the MNT by assuming that controller $K(s)$ stabilizes the nominal plant $G(s)$ and that gain and phase uncertainties are large enough to change the number of encirclements made by the determinant of the return difference matrix locus.

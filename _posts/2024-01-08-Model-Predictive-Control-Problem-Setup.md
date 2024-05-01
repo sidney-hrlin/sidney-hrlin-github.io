@@ -10,6 +10,8 @@ mermaid: true
 image: /assets/img/2024-01-08-Model-Predictive-Control-Problem-Setup.assets/mpc_illustration.png
 ---
 
+In this page, we present a generalized problem formulation of a nonlinear system for model predictive control.
+
 ## Linearization
 
 Consider a nonlinear continuous system 
@@ -28,13 +30,13 @@ define
 
 $$
 \begin{aligned}
-A &=& \left.\frac{\partial f}{\partial x}\right \vert_{(\hat{x},u_0)} \\
-B &=& \left.\frac{\partial f}{\partial u}\right \vert_{(\hat{x},u_0)} \\
-\dot{\hat{x}} &=& f(\hat{x},u_0)
+A &= \left.\frac{\partial f}{\partial x}\right \vert_{(\hat{x},u_0)} \\
+B &= \left.\frac{\partial f}{\partial u}\right \vert_{(\hat{x},u_0)} \\
+\dot{\hat{x}} &= f(\hat{x},u_0)
 \end{aligned}
 $$
 
-rewrite system in error space
+rewrite system in error space, we have
 
 $$
 \begin{aligned}
@@ -46,26 +48,34 @@ $$
 
 ## Discretization
 
-Assumption: 
+Assumptions: 
 
 - constant control $u$ at time interval $[kh \quad kh+h)$
 - fix expansion point $(\hat{x},u_0)$ at time interval  $[kh \quad kh+h)$
 - constant system matrix pair $(A,B)$ (LTI system) at time interval  $[kh \quad kh+h)$
 
-## Constraint
+Next, we start with auxiliary matrix function $K(t) = e^{-At}$
 
 $$
-\frac{d}{dt}[e^{-At}(x-\hat{x})] = -e^{-At}A(x-\hat{x})+e^{-At}(\dot{x} - \dot{\hat{x}}) \\
-\frac{d}{dt}[e^{-At}(x-\hat{x})]  + e^{-At}A(x-\hat{x}) = e^{-At}(\dot{x} - \dot{\hat{x}}) \\
+\begin{aligned}
+&\frac{d}{dt}[e^{-At}(x-\hat{x})] = -e^{-At}A(x-\hat{x})+e^{-At}(\dot{x} - \dot{\hat{x}}) \\
+&\frac{d}{dt}[e^{-At}(x-\hat{x})]  + e^{-At}A(x-\hat{x}) = e^{-At}(\dot{x} - \dot{\hat{x}}) \\
+\end{aligned}
 $$
 
+expand RHS with error space system
+
 $$
-\begin{align}
+\begin{aligned}
 e^{-At}(\dot{x} - \dot{\hat{x}}) &= e^{-At}(A(x-\hat{x})+B(u-u_0)) \\
                                                            &= e^{-At}A(x-\hat{x})+e^{-At}B(u-u_0)\\
                                                            &= e^{-At}A(x-\hat{x}) + \frac{d}{dt}[e^{-At}(x-\hat{x})] 
-\end{align}
-\\ \\
+\end{aligned}
+$$
+
+thus, we have
+
+$$
 \frac{d}{dt}[e^{-At}(x-\hat{x})] = e^{-At}B(u-u_0)
 $$
 
@@ -73,9 +83,9 @@ Take integral at both side
 
 $$
 \begin{aligned}
-\int_{kh}^{kh+h} \frac{d}{dt}[e^{-At}(x-\hat{x})] dt &=&& \int_{kh}^{kh+h}e^{-At}B(u-u_0)dt\\
-e^{-At}(x-\hat{x})\vert_{kh}^{kh+h} &=&& \int_{kh}^{kh+h}e^{-At}B(u-u_0)dt\\
-e^{-A(kh+h)}(x(kh+h)-\hat{x}(kh+h))- e^{-Akh}(x(kh)-\hat{x}(kh))&=&& \int_{kh}^{kh+h}e^{-At}B(u-u_0)dt\\
+\int_{kh}^{kh+h} \frac{d}{dt}[e^{-At}(x-\hat{x})] dt &= \int_{kh}^{kh+h}e^{-At}B(u-u_0)dt\\
+e^{-At}(x-\hat{x})\vert_{kh}^{kh+h} &= \int_{kh}^{kh+h}e^{-At}B(u-u_0)dt\\
+e^{-A(kh+h)}(x(kh+h)-\hat{x}(kh+h))- e^{-Akh}(x(kh)-\hat{x}(kh))&= \int_{kh}^{kh+h}e^{-At}B(u-u_0)dt\\
 \end{aligned}
 $$
  
@@ -133,9 +143,10 @@ Cost $J_1$ : state deviation, where $Q$ is a semi-positive definite matrix
 
 $$
 \begin{aligned}
-J_1 &=&&   \frac{1}{2}||x-x_{ref}||_{Q} \\
-&=&& \frac{1}{2}\sum_{k=0}^N(x(k)-x_{ref}(k))^TQ(k)(x(k)-x_{ref}(k))\\
-&=&& \frac{1}{2}\sum_{k=0}^Nx(k)^TQ(k)x(k)-2(Q(k)x_{ref}(k))^Tx(k) + x_{ref}(k)^TQ(k)x_{ref}(k)\\
+J_1 
+&= \frac{1}{2}||x-x_{ref}||_{Q} \\
+&= \frac{1}{2}\sum_{k=0}^N(x(k)-x_{ref}(k))^TQ(k)(x(k)-x_{ref}(k))\\
+&= \frac{1}{2}\sum_{k=0}^Nx(k)^TQ(k)x(k)-2(Q(k)x_{ref}(k))^Tx(k) + x_{ref}(k)^TQ(k)x_{ref}(k)\\
 \end{aligned}
 $$
 
@@ -143,9 +154,10 @@ Cost $J_2$: control deviation, where $S$ is a semi-positive definite matrix
 
 $$
 \begin{aligned}
-J_2 &=&& \frac{1}{2}||u-u_{ref}||_{S} \\
-&=&& \frac{1}{2}\sum_{k=0}^{N-1}(u(k)-u_{ref}(k))^TS(k)(u(k)-u_{ref}(k))\\
-&=&& \frac{1}{2}\sum_{k=0}^{N-1}u(k)^TS(k)u(k)-2(S(k)u_{ref}(k))^Tu(k) + u_{ref}(k)^TS(k)u_{ref}(k)\\
+J_2 
+&= \frac{1}{2}||u-u_{ref}||_{S} \\
+&= \frac{1}{2}\sum_{k=0}^{N-1}(u(k)-u_{ref}(k))^TS(k)(u(k)-u_{ref}(k))\\
+&= \frac{1}{2}\sum_{k=0}^{N-1}u(k)^TS(k)u(k)-2(S(k)u_{ref}(k))^Tu(k) + u_{ref}(k)^TS(k)u_{ref}(k)\\
 \end{aligned}
 $$
 
@@ -153,8 +165,9 @@ Cost $J_3$: control smoothness,where $R$ is a semi-positive definite matrix
 
 $$
 \begin{aligned}
-J_3 &=&& \frac{1}{2}||\Delta u||_{R} \\
-&=&& \frac{1}{2}\sum_{k=0}^{N-1}\Delta u^TR\Delta u \\
+J_3 
+&= \frac{1}{2}||\Delta u||_{R} \\
+&= \frac{1}{2}\sum_{k=0}^{N-1}\Delta u^TR\Delta u \\
 \end{aligned}
 $$
 
@@ -205,11 +218,11 @@ rewrite the optimization problem with decision variable
 $$
 \begin{aligned}
 \mathop{\arg \min}\limits_{x,u,\delta u} J^*
-&=&& \mathop{\arg \min}\limits_{x,u,\delta u}\frac{1}{2} 
+&= \mathop{\arg \min}\limits_{x,u,\delta u}\frac{1}{2} 
 \xi ^T diag 
 \begin{pmatrix}Q(0)& Q(1)&\cdots & Q(N)&0&S(0)&S(1)&\cdots&S(N-1)&0&R(0)&R(1)&\cdots&R(N-1)& 0 &0& \cdots & 0\end{pmatrix}
 \xi\\
-&&&+
+&+
 \begin{bmatrix}-Q(0)x_{ref}(0) & -Q(1)x_{ref}(1) & \cdots & -Q(N)x_{ref}(N) & 0 & -S(0)u_{ref}(0) & -S(1)u_{ref}(1) & \cdots & -S(N-1)u_{ref}(N-1) & 0 &\cdots & 0 & 0 &\cdots & 0\end{bmatrix}
 \xi
 \end{aligned}
@@ -219,14 +232,14 @@ Define hessian matrix $P$ and gradient matrix $q$ as
 
 $$
 \begin{aligned}
-P &=&&
+P &=
 diag(
 \underbrace{Q(0)\quad Q(1)\quad\cdots \quad Q(N)}_{(N+1)\times(n_s \times n_s)}\quad
 \underbrace{0\quad S(0)\quad S(1)\quad \cdots\quad S(N-1)}_{(N+1)\times(n_c \times n_c)}\quad
 \underbrace{0\quad R(0)\quad R(1)\quad\cdots\quad R(N-1)}_{(N+1)\times(n_c \times n_c)}\quad
 \underbrace{0\quad 0\quad \cdots \quad 0}_{(N+1)\times(n_s \times n_s)}
 )\\
-q &=&&[
+q &=[
 \underbrace{-x_{ref}^T(0)Q(0)\quad -x_{ref}^T(1)Q(1) \quad \cdots \quad -x_{ref}^T(N)Q(N)}_{(N+1)\times(1 \times n_s)} \quad
 \underbrace{ 0 \quad -u_{ref}^T(0)S(0) \quad -u_{ref}^T(1)S(1) \quad \cdots \quad -u_{ref}^T(N-1) S(N-1)}_{(N+1)\times(1 \times n_c)}\quad 
 \underbrace{0 \quad \cdots \quad 0}_{(N+1)\times(1 \times n_c)}\quad 
@@ -247,10 +260,10 @@ initial condition constraint
 
 $$
 \begin{aligned}
-x(0) &=& x(0) (known) \\
-u(-1) &=& u(-1) (known) \\ 
-\Delta u(-1) &=& 0 \\
-\delta(-1) &=& 0
+x(0) &= x(0) (known) \\
+u(-1) &= u(-1) (known) \\ 
+\Delta u(-1) &= 0 \\
+\delta(-1) &= 0
 \end{aligned}
 $$
 
@@ -258,19 +271,19 @@ system  constraint
 
 $$
 \begin{aligned}
-x(1) &=&& A_d(0)x(0)+B_d(0)u(0)+ \delta(0) \\
-x(2) &=&& A(1)_dx(1)+B_d(1)u(1)+ \delta(1) \\
-&\vdots &&\\
-x(k+1) &=&& A_d(k)x(k)+B_d(k)u(k)+ \delta(k) \\
-&\vdots &&\\
-x(N) &=&& A_d(N-1)x(N-1)+B_d(N-1)u(N-1)+ \delta(N-1) \\
+x(1) &= A_d(0)x(0)+B_d(0)u(0)+ \delta(0) \\
+x(2) &= A(1)_dx(1)+B_d(1)u(1)+ \delta(1) \\
+&\vdots \\
+x(k+1) &= A_d(k)x(k)+B_d(k)u(k)+ \delta(k) \\
+&\vdots \\
+x(N) &= A_d(N-1)x(N-1)+B_d(N-1)u(N-1)+ \delta(N-1) \\
 \\\\
-u(0) &=&& u(-1) + \Delta u(0)\\
-u(1) &=&& u(0) + \Delta u(1)\\
-&\vdots &&\\
-u(k) &=&& u(k-1) + \Delta u(k)\\
-&\vdots &&\\
-u(N-1) &=&& u(N-2) + \Delta u(N-1)
+u(0) &= u(-1) + \Delta u(0)\\
+u(1) &= u(0) + \Delta u(1)\\
+&\vdots \\
+u(k) &= u(k-1) + \Delta u(k)\\
+&\vdots \\
+u(N-1) &= u(N-2) + \Delta u(N-1)
 \end{aligned}
 $$
 
@@ -278,19 +291,19 @@ equivalently
 
 $$
 \begin{aligned}
-0 &=&& A_d(0)x(0) - x(1)+B_d(0)u(0)+ \delta(0) \\
-0 &=&& A_d(1)x(1) - x(2)+B_d(1)u(1)+ \delta(1) \\
+0 &= A_d(0)x(0) - x(1)+B_d(0)u(0)+ \delta(0) \\
+0 &= A_d(1)x(1) - x(2)+B_d(1)u(1)+ \delta(1) \\
 &\vdots &\\
-0 &=&& A_dx(k) - x(k+1)+B_du(k)+ \delta(k) \\
+0 &= A_dx(k) - x(k+1)+B_du(k)+ \delta(k) \\
 &\vdots &\\
-0 &=&& A_d(N-1)x(N-1) - x(N)+B_d(N-1)u(N-1)+ \delta(N-1) \\
+0 &= A_d(N-1)x(N-1) - x(N)+B_d(N-1)u(N-1)+ \delta(N-1) \\
 \\\\
-0 &=&& u(-1) - u(0) + \Delta u(0)\\
-0 &=&& u(0) - u(1)+ \Delta u(1)\\
+0 &= u(-1) - u(0) + \Delta u(0)\\
+0 &= u(0) - u(1)+ \Delta u(1)\\
 &\vdots &\\
-0 &=&& u(k-1) -u(k)+ \Delta u(k)\\
+0 &= u(k-1) -u(k)+ \Delta u(k)\\
 &\vdots &\\
-0 &=&& u(N-2)-u(N-1)  + \Delta u(N-1)
+0 &= u(N-2)-u(N-1)  + \Delta u(N-1)
 \end{aligned}
 $$
 
@@ -421,18 +434,22 @@ $$
 The constraints could be written in compact form:
 
 $$
-l_{\xi} \leq A_c \xi \leq u_{\xi}
+\begin{aligned}
+&l_{\xi} \leq A_c \xi \leq u_{\xi}
 \\\\
-\xi \in \Re^{((N+1)n_s + (N+1)n_c + (N+1)n_c +(N+1)n_c)\times1 }=\Re^{N_p\times1 }\\
-l_{\xi},u_{\xi} \in \Re^{((N+1)n_s + (N+1)n_c + (N+1)n_s +(N+1)n_c + (N+1)n_c + (N+1)n_s)\times1 }=\Re^{N_c\times1}\\
-A_c \in \Re^{N_c \times N_p}
+&A_c \in \Re^{N_c \times N_p}\\
+&\xi \in \Re^{((N+1)n_s + (N+1)n_c + (N+1)n_c +(N+1)n_c)\times1 }=\Re^{N_p\times1 }\\
+&l_{\xi},u_{\xi} \in \Re^{((N+1)n_s + (N+1)n_c + (N+1)n_s +(N+1)n_c + (N+1)n_c + (N+1)n_s)\times1 }=\Re^{N_c\times1}
+\end{aligned}
 $$
 
 ## Problem Setup
 The model predictive control problem could be written in compact form:
 
 $$
+\begin{aligned}
 \mathop{\arg \min}\limits_{\xi}\frac{1}{2} 
 \xi ^T P \xi +q^T\xi \\
 s.t. \qquad l_{\xi} \leq A_c \xi \leq u_{\xi}
+\end{aligned}
 $$
