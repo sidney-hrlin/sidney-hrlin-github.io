@@ -10,11 +10,11 @@ mermaid: true
 image: /assets/img/2024-01-08-Model-Predictive-Control-Problem-Setup.assets/mpc_illustration.png
 ---
 
-In this page, we present a generalized problem formulation of a nonlinear system for model predictive control.
+In this post, we propose a generalized approach for modeling MPC problems for non-linear system.
 
 ## Linearization
 
-Consider a nonlinear continuous system 
+Consider a non-linear continuous system 
 
 $$
 \dot{x} = f(x,u)

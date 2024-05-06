@@ -10,11 +10,14 @@ mermaid: true
 image: /assets/img/2024-04-03-Linear-Quadratic-Optimal-Tracking-for-Time-Varying-Nonlinear-System.assets/Bellman_flow_chart.png
 ---
 
-In this page, we derived the analytical solution for generalized tracking problem with quadratic cost of a time-varying nonlinear system.
+
+## Motivation
+
+Tracking a desired trajectory while minimizing a quadratic cost function is a critical problem in many engineering and scientific domains. However, solving this problem analytically can be challenging, especially when dealing with time-varying systems. In this post, we present a comprehensive framework for deriving the analytical solution to the generalized tracking problem with quadratic cost for a time-varying system. We provide a detailed description of the problem formulation and the optimal policy derivation process, covering both continuous and discrete time cases. Our approach offers a valueable tool for tackling real-world tracking tasks and advancing our understanding of control strategies for dynamic systems.
 
 ## System Linearization
 
-Consider a time-varying nonlinear dynamical system
+Consider a time-varying non-linear dynamical system
 
 $$
 \dot x = f(t,x,u)

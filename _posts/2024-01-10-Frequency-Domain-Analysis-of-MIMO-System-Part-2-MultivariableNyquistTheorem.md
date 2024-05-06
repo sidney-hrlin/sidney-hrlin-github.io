@@ -9,7 +9,7 @@ mermaid: true
 image: /assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v2.jpeg
 ---
 
-In this page, we show how to use **Multi-variable Nyquist Theorem** to analysis robustness of a MIMO system.
+In this post, we show how to analysis robustness of a MIMO system with **Multi-variable Nyquist Theorem**.
 
 ## Determinant of Return Difference
 

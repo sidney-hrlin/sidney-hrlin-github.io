@@ -9,7 +9,7 @@ mermaid: true
 image: /assets/img/2024-01-09-Frequency-Domain-Analysis-of-MIMO-System-Part-1-Model-Generalization.assets/generalized_model_block_diagram.jpeg
 ---
 
-In this page, we present a generalized state-space linear-time-invariant plant and controller models for control design and frequency domain analysis  that will be used in other sections. Models for closed-loop simulation and frequency domain analysis at both plant input and plant output are also derived.
+In this post, we present a generalized state-space linear-time-invariant plant and controller models for control design and frequency domain analysis  that will be used in other sections. Models for closed-loop simulation and frequency domain analysis at both plant input and plant output are also derived.
 
 ## System Modeling
 

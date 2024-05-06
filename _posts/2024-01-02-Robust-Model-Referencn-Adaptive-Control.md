@@ -54,7 +54,7 @@ $$
 \right] \succ0
 $$
 
-$\delta_p(x_p)$ is nonlinear system uncertainty and is defined as
+$\delta_p(x_p)$ is non-linear system uncertainty and is defined as
 
 $$
 \begin{aligned}
@@ -286,7 +286,7 @@ $$
 $$
 
 Also we observe that adaption law is nothing but learning rate $\times$ states $\times e^TpB_p$
-and model reference adaptive control is nothing but nonlinear integral control.
+and model reference adaptive control is nothing but non-linear integral control.
 
 According to Lyapunov $2^nd$ Theorem, we can conclude that
 
@@ -462,7 +462,7 @@ Hence the system is stable ISL.
 
 In previous section,we design MRAC adaption law by Lyapunov Stability Theorem in most common case
 and found its error dynamics satisfies UUB condition and all states are uniformly bounded in time.
-Now let's design a model reference adaptive controller for vehicle longitudinal and lateral control.Let's take longitudinal MRAC as example,the motivation of this project is to achieve better inner loop performance(acceleration tracking performance) in the presence of various system uncertainties (nonlinear actuator,inaccurate calibration table,non-ideal road conditions). Our goal is design a controller which will learn the system uncertainties and recover ideal performance from it.
+Now let's design a model reference adaptive controller for vehicle longitudinal and lateral control.Let's take longitudinal MRAC as example,the motivation of this project is to achieve better inner loop performance(acceleration tracking performance) in the presence of various system uncertainties (non-linear actuator,inaccurate calibration table,non-ideal road conditions). Our goal is design a controller which will learn the system uncertainties and recover ideal performance from it.
 
 In this project,we identificate throttle and brake dynamics as second-order system (plant model) as follow
 

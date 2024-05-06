@@ -10,7 +10,7 @@ mermaid: true
 image: /assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/6.jpg
 ---
 
-In this page, we show how to design a Stanley controller with time domain and frequency domain specifications for a vehicle lateral dynamic MIMO system.
+In this post, we demonstrate a basic design process of [Lateral Stanley Controller](https://medium.com/roboquest/understanding-geometric-path-tracking-algorithms-stanley-controller-25da17bcc219) with time domain and frequency domain specifications.
 
 ## Plant Model
 The front axle based error state vehicle lateral dynamic model is used to run simulation and analyze tracking performance and robustness of stanley controller. 
