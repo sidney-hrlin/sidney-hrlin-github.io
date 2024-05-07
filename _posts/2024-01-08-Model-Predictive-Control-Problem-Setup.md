@@ -7,7 +7,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
-image: /assets/img/2024-01-08-Model-Predictive-Control-Problem-Setup.assets/mpc_illustration.png
+image: /assets/img/2024-01-08-Model-Predictive-Control-Problem-Setup.assets/MPCIllustration.jpg
 ---
 
 In this post, we propose a generalized approach for modeling MPC problems for non-linear system.
