@@ -6,7 +6,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
-image: /assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v2.jpeg
+image: /assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v2.jpeg
 ---
 
 In this post, we show how to analysis robustness of a MIMO system with **Multi-variable Nyquist Theorem**.
@@ -151,25 +151,25 @@ Since the plant model and controller model is non-square in lateral control prob
 
 A significant deterioration in both gain and phase margin could be observed!
 
-![nyquist_1](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_1.jpeg)    						Comparison between stability of nominal closed-loop system and system with delay
+![nyquist_1](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_1.jpeg)    						Comparison between stability of nominal closed-loop system and system with delay
 
 ### How much pure delay will destabilized the closed-loop system?
 
 Max delay acceptable by closed-loop system could be found where encirclement change as we increase delay time.
 
-![](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_2.jpeg)
+![](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_2.jpeg)
 
 | **Model Velocity (m/s)** |                     **Nyquist** **Plot**                     | **Max Delay (s)** |
 | :----------------------: | :----------------------------------------------------------: | :---------------: |
-|            1             | ![nyquist_v1](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v1.jpeg) |        4.5        |
-|            2             | ![nyquist_v2](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v2.jpeg) |        2.4        |
-|            4             | ![nyquist_v4](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v4.jpeg) |        1.2        |
-|            8             | ![nyquist_v8](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v8.jpeg) |        0.7        |
-|            12            | ![nyquist_v12](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v12.jpeg) |        0.6        |
-|            16            | ![nyquist_v16](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v16.jpeg) |        0.5        |
-|            20            | ![nyquist_v20](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v20.jpeg) |        0.4        |
-|            25            | ![nyquist_v25](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v25.jpeg) |        0.4        |
-|            30            | ![nyquist_v30](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v30.jpeg) |       0.35        |
+|            1             | ![nyquist_v1](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v1.jpeg) |        4.5        |
+|            2             | ![nyquist_v2](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v2.jpeg) |        2.4        |
+|            4             | ![nyquist_v4](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v4.jpeg) |        1.2        |
+|            8             | ![nyquist_v8](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v8.jpeg) |        0.7        |
+|            12            | ![nyquist_v12](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v12.jpeg) |        0.6        |
+|            16            | ![nyquist_v16](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v16.jpeg) |        0.5        |
+|            20            | ![nyquist_v20](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v20.jpeg) |        0.4        |
+|            25            | ![nyquist_v25](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v25.jpeg) |        0.4        |
+|            30            | ![nyquist_v30](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_v30.jpeg) |       0.35        |
 
 ### How actuator dynamics affect closed-loop system?
 
@@ -193,19 +193,19 @@ $$
 
 Step response comparison between real system and simulation system:
 
-![act_model](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/act_model.jpeg)
+![act_model](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/act_model.jpeg)
 
 Then, we add actuator dynamics into plant model, reconnect it with controller and analysis frequency response of closed-loop system. Here’s what we get:  
 
 | **Model** **Velocity (m/s)** |                     **Nyquist** **Plot**                     | **Gain Crossover Frequency** **(Hz)** | **Gain Margin (dB)** | **Phase Margin (deg)** | **Extra Max Delay (s)** |
 | :--------------------------: | :----------------------------------------------------------: | :-----------------------------------: | :------------------: | :--------------------: | :---------------------: |
-|              1               | ![nyquist_act1](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act1.jpeg) |                 0.05                  |         25.9         |          64.2          |           4.3           |
-|              5               | ![nyquist_act5](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act5.jpeg) |                 0.19                  |         12.6         |          40.3          |           0.6           |
-|              10              | ![nyquist_act10](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act10.jpeg) |                 0.29                  |         7.21         |          23.6          |           0.2           |
-|              15              | ![nyquist_act15](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act15.jpeg) |                 0.34                  |         4.87         |          15.5          |          0.14           |
-|              20              | ![nyquist_act20](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act20.jpeg) |                 0.38                  |         2.60         |          7.98          |          0.06           |
-|              25              | ![nyquist_act25](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act25.jpeg) |                 0.39                  |         1.91         |          5.55          |          0.04           |
-|              30              | ![nyquist_act30](/assets/img/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act30.jpeg) |               unstable                |       unstable       |        unstable        |        unstable         |
+|              1               | ![nyquist_act1](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act1.jpeg) |                 0.05                  |         25.9         |          64.2          |           4.3           |
+|              5               | ![nyquist_act5](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act5.jpeg) |                 0.19                  |         12.6         |          40.3          |           0.6           |
+|              10              | ![nyquist_act10](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act10.jpeg) |                 0.29                  |         7.21         |          23.6          |           0.2           |
+|              15              | ![nyquist_act15](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act15.jpeg) |                 0.34                  |         4.87         |          15.5          |          0.14           |
+|              20              | ![nyquist_act20](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act20.jpeg) |                 0.38                  |         2.60         |          7.98          |          0.06           |
+|              25              | ![nyquist_act25](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act25.jpeg) |                 0.39                  |         1.91         |          5.55          |          0.04           |
+|              30              | ![nyquist_act30](/assets/2024-01-10-Frequency-Domain-Analysis-of-MIMO-System-Part-2-MultivariableNyquistTheorem.assets/nyquist_act30.jpeg) |               unstable                |       unstable       |        unstable        |        unstable         |
 
 ## Summary
 

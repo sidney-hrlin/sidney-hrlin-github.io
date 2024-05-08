@@ -7,7 +7,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
-image: /assets/img/2024-04-03-Linear-Quadratic-Optimal-Tracking-for-Time-Varying-Nonlinear-System.assets/BellmanEquation.jpg
+image: /assets/2024-04-03-Linear-Quadratic-Optimal-Tracking-for-Time-Varying-Nonlinear-System.assets/BellmanEquation.jpg
 ---
 
 

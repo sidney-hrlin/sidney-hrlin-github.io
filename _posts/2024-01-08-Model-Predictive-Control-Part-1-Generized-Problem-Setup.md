@@ -1,5 +1,5 @@
 ---
-title: Model Predictive Control Problem Setup
+title: Model Predictive Control Part 1. Generized Problem Setup
 date: 2024-01-08 12:03:00 +0800
 categories: [Optimal Control]
 tags: [mpc]     # TAG names should always be lowercase
@@ -7,7 +7,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
-image: /assets/img/2024-01-08-Model-Predictive-Control-Problem-Setup.assets/MPCIllustration.jpg
+image: /assets/2024-01-08-Model-Predictive-Control-Part-1-Generized-Problem-Setup.assets/MPCIllustration.jpg
 ---
 
 In this post, we propose a generalized approach for modeling MPC problems for non-linear system.

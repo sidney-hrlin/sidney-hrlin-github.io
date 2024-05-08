@@ -7,7 +7,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
-image: /assets/img/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/mrac_test.png
+image: /assets/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/mrac_test.png
 ---
 
 ## Motivation
@@ -559,7 +559,7 @@ $$
 From above,we know that if we have some pre-known knowledge about plant dynamics,we can estimate the ideal
 gain $W_x^\*$ and $W_r^\*$ and set it as initial condition. Initial condition is very important influence factors on performance of the MRAC,let's take a look
 
-![init_val_compare](/assets/img/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/init_val_compare.png)
+![init_val_compare](/assets/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/init_val_compare.png)
 
 
 Alright,let's continue. $A_p$ and $B_p$ are unknown here(in the contrast to previous section),we need to estimate them,so the control we have is
@@ -646,7 +646,7 @@ $$
 
 ## Parameter Drifting: The Sudden Failure
 
-![parameter_drifting](/assets/img/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/parameter_drifting.png)
+![parameter_drifting](/assets/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/parameter_drifting.png)
 
 
 Plant model with uniformly bounded  disturbances
@@ -743,7 +743,7 @@ $$
 
 If state tracking error enters compact set $\Omega_1$ in finite time,it will remain inside for all future time. Note that $\Omega_0$ is compact in e space,however not compact in $\Delta\theta$ space. Therefore $\Delta\theta$ is not restricted at all. Inside $\Omega_0$, $\dot{V}$ can be positive,as a consequence, $\Delta\theta$ can grow unbounded even though e is bounded. This is known as "Parameter Drifting".This shows that MRAC law $\dot{\theta}=-\Gamma_\theta\phi e^TPB_p$ is not robust to bounded disturbances,no matter how small the latter are.
 
-![projection](/assets/img/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/projection.png)
+![projection](/assets/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/projection.png)
 
 
 In order to resolve this problem,we need to pose a constraint for $\Delta\theta$ to make it stays in a compact set. But how? There are several methods to attack this problem.
@@ -828,7 +828,7 @@ $$
 
 What does projection operator do?
 
-![projection_math](/assets/img/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/projection_math.png)
+![projection_math](/assets/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/projection_math.png)
 
 
 Here,we assume that the ground turth $\theta^\*$ lives in a compact set ,so make sure $\theta^\*$ is inside of preselected convex set $\Omega_1$
@@ -882,13 +882,13 @@ $$
 
 ## Block Diagram
 
-![mrac_block_diagram](/assets/img/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/mrac_block_diagram.png)
+![mrac_block_diagram](/assets/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/mrac_block_diagram.png)
 
 ## Performance
 
-![rd1](/assets/img/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/rd1.png)
+![rd1](/assets/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/rd1.png)
 
-![rd2](/assets/img/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/rd2.png)
+![rd2](/assets/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/rd2.png)
 
-![rd3](/assets/img/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/rd3.png)
+![rd3](/assets/2024-01-02-Robust-Model-Referencn-Adaptive-Control.assets/rd3.png)
 

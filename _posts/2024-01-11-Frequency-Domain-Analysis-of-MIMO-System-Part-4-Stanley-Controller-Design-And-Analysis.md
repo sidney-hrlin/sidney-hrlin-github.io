@@ -7,7 +7,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
-image: /assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/6.jpg
+image: /assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/6.jpg
 ---
 
 In this post, we demonstrate a basic design process of [Lateral Stanley Controller](https://medium.com/roboquest/understanding-geometric-path-tracking-algorithms-stanley-controller-25da17bcc219) with time domain and frequency domain specifications.
@@ -120,82 +120,82 @@ Stability and Performance Specifications
 
 | **Design Heading Gain (with a fix lateral gain)**            |
 | ------------------------------------------------------------ |
-| ![h1](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h1.jpg)  |
-| ![h2](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h2.jpg)  |
-| ![h3](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h3.jpg)  |
+| ![h1](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h1.jpg)  |
+| ![h2](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h2.jpg)  |
+| ![h3](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h3.jpg)  |
 | Time domain performance varies with scale factor of heading gain |
-| ![h4](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h4.jpg)  |
-| ![h5](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h5.jpg)  |
-| ![h7](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h7.jpg)  |
-| ![h8](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h8.jpg)  |
-| ![h6](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h6.jpg)  |
+| ![h4](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h4.jpg)  |
+| ![h5](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h5.jpg)  |
+| ![h7](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h7.jpg)  |
+| ![h8](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h8.jpg)  |
+| ![h6](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h6.jpg)  |
 | Loop gain crossover frequency (LGCF) is a important design index in frequency domain analysis |
-| ![h9](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h9.jpg)  |
+| ![h9](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/h9.jpg)  |
 | Stability Test: Since no overlap, according to **Small Gain Theorem**, closed-loop system with actuator is guaranteed to be stable. |
 | **Design Lateral Gain (with a fix heading gain)**            |
-| ![l1](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l1.jpg)  |
-| ![l2](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l2.jpg)  |
-| ![l3](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l3.jpg)  |
+| ![l1](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l1.jpg)  |
+| ![l2](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l2.jpg)  |
+| ![l3](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l3.jpg)  |
 | Time domain performance varies with scale factor of heading gain |
-| ![l4](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l4.jpg)  |
-| ![l5](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l5.jpg)  |
-| ![l7](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l7.jpg)  |
-| ![l8](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l8.jpg)  |
-| ![l6](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l6.jpg)  |
-| ![l9](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l9.jpg)  |
+| ![l4](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l4.jpg)  |
+| ![l5](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l5.jpg)  |
+| ![l7](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l7.jpg)  |
+| ![l8](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l8.jpg)  |
+| ![l6](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l6.jpg)  |
+| ![l9](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/l9.jpg)  |
 | **Final Design**                                             |
-| ![1](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/1.jpg)   |
-| ![2](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/2.jpg)   |
-| ![3](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/3.jpg)   |
-| ![4](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/4.jpg)   |
-| ![5](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/5.jpg)   |
-| ![6](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/6.jpg)   |
+| ![1](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/1.jpg)   |
+| ![2](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/2.jpg)   |
+| ![3](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/3.jpg)   |
+| ![4](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/4.jpg)   |
+| ![5](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/5.jpg)   |
+| ![6](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/6.jpg)   |
 
 ### Design With Actuator Dynamics (Model Pure Delay as Equivalent Uncertainty)
 
 | **Design Lateral Gain (with zero heading gain)**             |
 | ------------------------------------------------------------ |
-| ![ld2_7](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_7.jpg) |
+| ![ld2_7](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_7.jpg) |
 | Relation between loop gain crossover frequency (LGCF) and scale factor of lateral gain (qq) |
-| ![ld2_1](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_1.jpg) |
-| ![ld2_2](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_2.jpg) |
-| ![ld2_3](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_3.jpg) |
-| ![ld2_10](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_10.jpg) |
-| ![ld2_11](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_11.jpg) |
-| ![ld2_12](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_12.jpg) |
+| ![ld2_1](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_1.jpg) |
+| ![ld2_2](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_2.jpg) |
+| ![ld2_3](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_3.jpg) |
+| ![ld2_10](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_10.jpg) |
+| ![ld2_11](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_11.jpg) |
+| ![ld2_12](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_12.jpg) |
 | Reasonable time domain performance                           |
-| ![ld2_4](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_4.jpg) |
-| ![ld2_5](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_5.jpg) |
-| ![ld2_8](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_8.jpg) |
+| ![ld2_4](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_4.jpg) |
+| ![ld2_5](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_5.jpg) |
+| ![ld2_8](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_8.jpg) |
 | Minimum $T_{max},S_{max}$ indicates minimum peak resonant    |
-| ![ld2_6](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_6.jpg) |
+| ![ld2_6](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_6.jpg) |
 | Maximum $I+L ,I+L^{-1}$ indicates maximum singular value stability margin |
-| ![ld2_9](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_9.jpg) |
+| ![ld2_9](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/ld2_9.jpg) |
 | **Design Heading Gain (with a fixed lateral gain designed above)** |
-| ![hd2_7](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_7.jpg) |
+| ![hd2_7](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_7.jpg) |
 | Relation between loop gain crossover frequency (LGCF) and scale factor of heading gain (qq) |
-| ![hd2_1](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_1.jpg) |
-| ![hd2_2](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_2.jpg) |
-| ![hd2_3](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_3.jpg) |
-| ![hd2_10](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_10.jpg) |
-| ![hd2_11](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_11.jpg) |
-| ![hd2_12](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_12.jpg) |
+| ![hd2_1](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_1.jpg) |
+| ![hd2_2](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_2.jpg) |
+| ![hd2_3](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_3.jpg) |
+| ![hd2_10](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_10.jpg) |
+| ![hd2_11](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_11.jpg) |
+| ![hd2_12](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_12.jpg) |
 | Reasonable time domain performance                           |
-| ![hd2_4](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_4.jpg) |
-| ![hd2_5](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_5.jpg) |
-| ![hd2_8](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_8.jpg) |
+| ![hd2_4](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_4.jpg) |
+| ![hd2_5](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_5.jpg) |
+| ![hd2_8](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_8.jpg) |
 | Select minimum  $T_{max}$ as final design point              |
-| ![hd2_6](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_6.jpg) |
+| ![hd2_6](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_6.jpg) |
 | Select maximum  $I+L^{-1}$ as final design point             |
-| ![hd2_9](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_9.jpg) |
+| ![hd2_9](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/hd2_9.jpg) |
 | current configuration is robust to actuator dynamics and extra delay |
 | **Final Design**                                             |
-| ![fd2_1](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/fd2_1.jpg) |
-| ![fd2_2](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/fd2_2.jpg) |
-| ![fd2_3](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/fd2_3.jpg) |
-| ![fd2_4](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/fd2_4.jpg) |
-| ![fd2_5](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/fd2_5.jpg) |
-| ![fd2_6](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/fd2_6.jpg) |
+| ![fd2_1](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/fd2_1.jpg) |
+| ![fd2_2](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/fd2_2.jpg) |
+| ![fd2_3](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/fd2_3.jpg) |
+| ![fd2_4](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/fd2_4.jpg) |
+| ![fd2_5](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/fd2_5.jpg) |
+| ![fd2_6](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/fd2_6.jpg) |
 
 | **Design Specifications** |                        |                                                  |
 | ------------------------- | ---------------------- | ------------------------------------------------ |
@@ -238,7 +238,7 @@ Stability and Performance Specifications
 
 |                Simulation Results Comparison                 |
 | :----------------------------------------------------------: |
-| ![simu1](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/simu1.jpg) |
+| ![simu1](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/simu1.jpg) |
 
 ### Road Test Results
  
@@ -255,4 +255,4 @@ Stability and Performance Specifications
 
 |                 Road Test Results Comparison                 |
 | :----------------------------------------------------------: |
-| ![roadtest1](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/roadtest1.jpg) |
+| ![roadtest1](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-4-Stanley-Controller-Design-And-Analysis.assets/roadtest1.jpg) |

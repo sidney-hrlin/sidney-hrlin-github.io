@@ -6,7 +6,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
-image: /assets/img/2024-01-09-Frequency-Domain-Analysis-of-MIMO-System-Part-1-Model-Generalization.assets/generalized_model_block_diagram.jpeg
+image: /assets/2024-01-09-Frequency-Domain-Analysis-of-MIMO-System-Part-1-Model-Generalization.assets/generalized_model_block_diagram.jpeg
 ---
 
 In this post, we present a generalized state-space linear-time-invariant plant and controller models for control design and frequency domain analysis  that will be used in other sections. Models for closed-loop simulation and frequency domain analysis at both plant input and plant output are also derived.
@@ -68,7 +68,7 @@ $$
 
 The plant and controller is connected as shown in following block diagram:
 
-![generalized_model_block_diagram](/assets/img/2024-01-09-Frequency-Domain-Analysis-of-MIMO-System-Part-1-Model-Generalization.assets/generalized_model_block_diagram.jpeg)
+![generalized_model_block_diagram](/assets/2024-01-09-Frequency-Domain-Analysis-of-MIMO-System-Part-1-Model-Generalization.assets/generalized_model_block_diagram.jpeg)
 
 ## Derivation of Closed-loop Dynamics
 rewrite $u$ by replacing plant output $y$, we have 
@@ -150,7 +150,7 @@ $$
 
 Then we connect these two system with as input $u_{in}$ and as output $u_{out}$ as shown below
 
-![LG_IN](/assets/img/2024-01-09-Frequency-Domain-Analysis-of-MIMO-System-Part-1-Model-Generalization.assets/LG_IN.png)
+![LG_IN](/assets/2024-01-09-Frequency-Domain-Analysis-of-MIMO-System-Part-1-Model-Generalization.assets/LG_IN.png)
  
 We can show that 
 
@@ -197,7 +197,7 @@ $$
 
 Then we connect these two system with $y_{in}$ as input and $y_{out}$ as output as shown below
 
-![LG_OUT](/assets/img/2024-01-09-Frequency-Domain-Analysis-of-MIMO-System-Part-1-Model-Generalization.assets/LG_OUT.png)
+![LG_OUT](/assets/2024-01-09-Frequency-Domain-Analysis-of-MIMO-System-Part-1-Model-Generalization.assets/LG_OUT.png)
 
 We can show that 
 

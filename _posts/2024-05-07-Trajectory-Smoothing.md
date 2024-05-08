@@ -7,7 +7,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
-image: /assets/img/others/draft.png
+image: /assets/others/draft.png
 ---
 
 > *This is post is still in draft stage!*

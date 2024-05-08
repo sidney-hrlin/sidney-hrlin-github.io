@@ -6,7 +6,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
-image: /assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-3-Singular-Value-Stability-Margins.assets/RD_Bode.png
+image: /assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-3-Singular-Value-Stability-Margins.assets/RD_Bode.png
 ---
 
 > *Good stability margins do not imply robustness, must look at distance to (-1,0)!*
@@ -64,7 +64,7 @@ With properties of singular values, the $A+B$ argument is proved.
 |                            |                **Additive Uncertainty Model**                |             **Multiplicative Uncertainty Model**             |
 | :------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |   **Uncertainty Model**    | $$\Delta  =  \begin{bmatrix}       k_1e^{j\phi_1}& & \\    & \ddots & \\    & & k_ie^{j\phi_i}\end{bmatrix}$$ | $$\Delta_u =  \begin{bmatrix}      k_1e^{j\phi_1}-1& & \\   & \ddots & \\    & & k_ie^{j\phi_i}-1\end{bmatrix}$$ |
-|     **Block Diagram**      | ![uncertainty_mode_1](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-3-Singular-Value-Stability-Margins.assets/uncertainty_mode_1.png) | ![uncertainty_mode_2](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-3-Singular-Value-Stability-Margins.assets/uncertainty_mode_2.png) |
+|     **Block Diagram**      | ![uncertainty_mode_1](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-3-Singular-Value-Stability-Margins.assets/uncertainty_mode_1.png) | ![uncertainty_mode_2](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-3-Singular-Value-Stability-Margins.assets/uncertainty_mode_2.png) |
 | **Loop Transfer Function** |                     $$L_u = K G \Delta$$                     |                $$L_u = K G (I_u + \Delta_u)$$                |
 |   **Return Difference**    |               $$I_u + L_u = I_u + K G \Delta$$               |          $$I_u + L_u = I_u + K G (I_u + \Delta_u)$$          |
 
@@ -223,7 +223,7 @@ The best gain and phase margin is achieved when $$\alpha_{\sigma} = \beta_{\sigm
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |                    Inverse of Sensitivity                    |             Inverse of Complementary Sensitivity             |
 | $$ \min_{\omega}\underline{\sigma}(I+L_u)=\alpha_{\sigma} = \frac{1}{\lVert S_u \rVert _{\infty}} $$ | $$ \min_{\omega}\underline{\sigma}(I+L_u^{-1})=\beta_{\sigma} = \frac{1}{\lVert T_u \rVert _{\infty}}$$ |
-| ![RD_Bode](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-3-Singular-Value-Stability-Margins.assets/RD_Bode.png)  | ![SR_Bode](/assets/img/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-3-Singular-Value-Stability-Margins.assets/SR_Bode.png)  |
+| ![RD_Bode](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-3-Singular-Value-Stability-Margins.assets/RD_Bode.png)  | ![SR_Bode](/assets/2024-01-11-Frequency-Domain-Analysis-of-MIMO-System-Part-3-Singular-Value-Stability-Margins.assets/SR_Bode.png)  |
 | Small minimum singular value indicates **poor stability robustness** | Small minimum singular value indicates **large peak resonance** |
 |   Make $S$ small at low frequencies for command following    | Make $T$ small at high frequencies for robustness to unmodeled dynamics and sensor noise |
 |                   **Equality Constraint**                    |                          $S+T = I$                           |
