@@ -7,7 +7,7 @@ author: <hOrange>
 math: true
 comments: true
 mermaid: true
-image: /assets/2024-05-08-Model-Predictive-Control-Part-2-Vehicle-Lateral-Control.assets/ForceAnalysis.jpg
+image: /assets/2024-01-08-Model-Predictive-Control-Part-2-Vehicle-Lateral-Control.assets/ForceAnalysis.jpg
 ---
 
 ## Motivation
@@ -38,11 +38,11 @@ $$
 
 This model is established under the Front-Left-Universe (FLU) inertial coordinate system. The origin of the coordinate system is fixed at the vehicle's center of mass, with the $x$-axis pointing in the vehicle's longitudinal direction towards the front. The $y$-axis is perpendicular to the $x$-axis and points to the left of the vehicle, while the $z$-axis is perpendicular to both the $x$ and $y$ axes, pointing upwards. It's worth noting that the global (map) coordinate system is the East-North-Universe (ENU). The coordinate system is shown in sketch below
 
-![coordinate system](/assets/2024-05-08-Model-Predictive-Control-Part-2-Vehicle-Lateral-Control.assets/CoordinateSystem.jpg)
+![coordinate system](/assets/2024-01-08-Model-Predictive-Control-Part-2-Vehicle-Lateral-Control.assets/CoordinateSystem.jpg)
 
 ## Force Analysis
 
-![force analysis](/assets/2024-05-08-Model-Predictive-Control-Part-2-Vehicle-Lateral-Control.assets/ForceAnalysis.jpg)
+![force analysis](/assets/2024-01-08-Model-Predictive-Control-Part-2-Vehicle-Lateral-Control.assets/ForceAnalysis.jpg)
 
 According to Newton's second law, the force in the $y$ direction (vehicle's lateral) could be expressed as
 
