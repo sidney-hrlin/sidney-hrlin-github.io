@@ -115,7 +115,7 @@ $$
 \end{aligned}
 $$
 
-introducing the augmented state variable $\eta_k$, defined as 
+introducing the augmented state variable $\eta$, defined as 
 
 $$
 \begin{aligned}
@@ -150,119 +150,52 @@ A instantaneous cost for a trajectory smoothing problem could be expressed as
 
 $$
 \begin{aligned}
-l &= \underbrace{(x-x_r)^TQ(x-x_r)}_{\text{state deviation cost}} + \underbrace{(u-u_r)^TR(u-u_r)}_{\text{control deviation cost}} + \underbrace{\Delta u^TS\Delta u}_{\text{control rate cost}} \\
-&= [\underbrace{(x-x_l)}_{\hat{x}}-\underbrace{(x_r-x_l)}_{\hat{x}_r}]^TQ[(x-x_l)-(x_r-x_l)] + [\underbrace{u-u_l}_{\hat{u}}-\underbrace{u_r-u_l}_{\hat{u}_r}]^TR[(u-u_l)-(u_r-u_l)] + \Delta u^TS\Delta u \\
+l(x,u,\Delta u) &= \underbrace{(x-x_r)^TQ(x-x_r)}_{\text{state deviation cost}} + \underbrace{(u-u_r)^TR(u-u_r)}_{\text{control deviation cost}} + \underbrace{\Delta u^TS\Delta u}_{\text{control rate cost}} \\
+&= [\underbrace{(x-x_l)}_{\hat{x}}-\underbrace{(x_r-x_l)}_{\hat{x}_r}]^TQ[(x-x_l)-(x_r-x_l)] \\
+& \qquad + [\underbrace{u-u_l}_{\hat{u}}-\underbrace{u_r-u_l}_{\hat{u}_r}]^TR[(u-u_l)-(u_r-u_l)] \\
+& \qquad + (\Delta \hat{u} + \Delta u_l)^TS(\Delta \hat{u} + \Delta u_l) \\
 &= (\hat{x}-\hat{x}_r)^TQ(\hat{x}-\hat{x}_r) + (\hat{u}-\hat{u}_r)^TR(\hat{u}-\hat{u}_r)+
-\Delta u^TS\Delta u \\
-&= \hat{x}^TQ\hat{x}+2(\underbrace{-Q\hat{x}_r}_{q_x})^T\hat{x}+\hat{u}^TR\hat{u}+2(\underbrace{-R\hat{u}_r}_{r_u})^T\hat{u}+\underbrace{\hat{x}_r^TQ\hat{x}_r}_{q_0}+\underbrace{\hat{u}_r^TR\hat{u}_r}_{r_0}+\Delta u^TS\Delta u \\
-&= \begin{bmatrix}\hat{x} \\ \hat{u} \end{bmatrix}^T \underbrace{\begin{bmatrix} Q & 0_{n_s \cdot n_c} \\ 0_{n_c \cdot n_s} & R \end{bmatrix}}_{D_{\eta \eta}} \underbrace{\begin{bmatrix}\hat{x} \\ \hat{u} \end{bmatrix}}_{\eta} + 2 {\underbrace{\begin{bmatrix} q_x \\ r_u \end{bmatrix}}_{d_{\eta}}}^T \begin{bmatrix} \hat{x} \\ \hat{u} \end{bmatrix}+\underbrace{q_0+r_0}_{d_{0_\eta}}+\Delta u^TS\Delta u \\
-&= \eta ^T D_{\eta \eta} \eta + 2 d_{\eta}^T \eta + d_{0_\eta} +\Delta u^TS\Delta u \\
-&= \begin{bmatrix} \eta \\ \Delta u \end{bmatrix}^T\underbrace{\begin{bmatrix} D_{\eta \eta} & 0 \\ 0 & S \end{bmatrix}}_{D_\xi} \underbrace{\begin{bmatrix} \eta \\ \Delta u \end{bmatrix}}_{\xi} + 2{\underbrace{\begin{bmatrix} d_{\eta} \\ 0\end{bmatrix}}_{d_\xi}}^T\begin{bmatrix} \eta \\ \Delta u \end{bmatrix} + \underbrace{d_{0_\eta}}_{d_{0_\xi}}\\
-&= \xi^T D_{\xi}\xi+2d_{\xi}^T\xi+d_{0_{\xi}}
+(\Delta \hat{u} + \Delta u_l)^TS(\Delta \hat{u} + \Delta u_l) \\
+&= \hat{x}^TQ\hat{x}+2(\underbrace{-Q\hat{x}_r}_{q_x})^T\hat{x}+\hat{u}^TR\hat{u}+2(\underbrace{-R\hat{u}_r}_{r_u})^T\hat{u}+\underbrace{\hat{x}_r^TQ\hat{x}_r}_{q_0}+\underbrace{\hat{u}_r^TR\hat{u}_r}_{r_0}+\Delta \hat{u}^TS\Delta \hat{u} + 2(\underbrace{S\Delta u_l}_{s})^T\Delta \hat{u}+\underbrace{\Delta u_l^TS\Delta u_l}_{s_0} \\
+&= \begin{bmatrix}\hat{x} \\ \hat{u} \end{bmatrix}^T \underbrace{\begin{bmatrix} Q & 0_{n_s \cdot n_c} \\ 0_{n_c \cdot n_s} & R \end{bmatrix}}_{D_{\eta \eta}} \underbrace{\begin{bmatrix}\hat{x} \\ \hat{u} \end{bmatrix}}_{\eta} + 2 {\underbrace{\begin{bmatrix} q_x \\ r_u \end{bmatrix}}_{d_{\eta}}}^T \begin{bmatrix} \hat{x} \\ \hat{u} \end{bmatrix} +\underbrace{q_0+r_0}_{d_{0_\eta}} + \Delta \hat{u}^TS\Delta \hat{u} + 2{s}^T\Delta \hat{u}+s_0 \\
+l(\eta,\Delta \hat{u}) &= \eta ^T D_{\eta \eta} \eta + 2 d_{\eta}^T \eta + d_{0_\eta} + \Delta \hat{u}^TS\Delta \hat{u} + 2{s}^T\Delta \hat{u}+s_0 \\
+&= \begin{bmatrix} \eta \\ \Delta \hat{u} \end{bmatrix}^T\underbrace{\begin{bmatrix} D_{\eta \eta} & 0_{(n_s + n_c) \cdot n_c} \\ 0_{n_c \cdot (n_s+n_c)} & S \end{bmatrix}}_{D} \underbrace{\begin{bmatrix} \eta \\ \Delta \hat{u} \end{bmatrix}}_{\xi} + 2{\underbrace{\begin{bmatrix} d_{\eta} \\ s \end{bmatrix}}_{d}}^T\begin{bmatrix} \eta \\ \Delta \hat{u} \end{bmatrix} + \underbrace{d_{0_\eta}+s_0}_{d_0}\\
+&= \xi^T D\xi+2d^T\xi+d_0
 \end{aligned}
 $$
 
-
-## Inductive Step
-
-The total cost $J(x_K,u)$ is defined as
+In [lqr post](/posts/Linear-Quadratic-Optimal-Tracking-for-Time-Varying-Nonlinear-System/), we have shown that the q-function and value function has the form
 
 $$
 \begin{aligned}
-J_k(x_k,U) = l_f(x_N,u_N)+ \sum_{i=k}^{N-1}l_i(x_i,u_i)
+q(\eta,\Delta \hat{u}) &= \xi^TP\xi+2p^T\xi+p_{0} \\
+V(\eta) &= \eta^TZ\eta + 2z^T\eta+z_{0}
 \end{aligned}
 $$
 
-The value function (optimal cost to go) $V_k(x_k)$ is defined as 
+for base case, we have
 
 $$
 \begin{aligned}
-V_N(x_N) &= l_f(x_N,u_N)\\
-V_k(x_k) &= J_k^{\ast}(x_k,U^{\ast})\\
-&= \inf_UJ(x_k,U) \\
-&= l_f(x_N,u_N)+\inf_{U}\sum_{i=k}^{N-1}l_i(x_i,u_i)\\
-&= l_k(x_k,u_k^{\ast}) + l_f(x_N,u_N)+\inf_{U^{-}}\sum_{i=k+1}^{N-1}l_i(x_i,u_i)\\
-&= l_k(x_k,u_k^{\ast}) + V_{k+1}(x_{k+1})\\
-&= \inf_{u_k}[\ l_k(x_k,u_k)+V_{k+1}(x_{k+1})\ ] \\ 
-&= \inf_{u_k}[\ l_k(x_k,u_k)+V_{k+1}(f_d(x_k,u_k))\ ] 
+P &= D_{\xi_N} \\
+p &= d_{\xi_N} \\
+p_0 &= d_{0_{\xi_N}}
 \end{aligned}
 $$
 
-Next, for each time step $t_k$, q-function(reinforcement learning) could be defined as
+assume minimum solution is feasible, we have
 
 $$
 \begin{aligned}
-q_k(x_k,u_k) = \left\{
-    \begin{array}{ll}
-        \ l_f(x_N,u_N) & \mbox{k = N} \\
-        \ l_k(x_k,u_k) + \inf_{u_{k+1}}q_{k+1}(x_{k+1},u_{k+1}) & \mbox{k < N}\\
-        \ = l_k(x_k,u_k) + V_{k+1}(x_{k+1})
-    \end{array}
-\right.
-\end{aligned}
-$$
-
-the inductive hypothesis that q-function and value function has the form
-
-$$
-\begin{aligned}
-q_k(x_k,u_k) &= \xi_k^TP_k\xi_k+2p_k^T\xi_k+p_{0_k} \\
-V_k(x_k) &= x_k^TZ_kx_k + 2z_k^Tx_k+z_{0_k}
-\end{aligned}
-$$
-
-base case at $k = N(t = t_f)$ , the terminal value function could be perfectly fitted in above form 
-
-$$
-\begin{aligned}
-q_N(x_N,u_N) &= l_f(x_N,u_N) \\
-&= \xi_N^TD_N\xi_N+2d_N^T\xi_N+d_{0_N}\\
-&= \xi_N^TP_N\xi_N+2p_N^T\xi_N+p_{0_N}
-\end{aligned}
-$$
-
-where 
-
-$$
-\begin{aligned}
-P_N &= D_N \\
-p_N &= d_N \\
-p_{0_N} &= d_{0_N}
-\end{aligned}
-$$
-
-For $\forall t \in [t_k, t_{N-1}]$ , suppose minimum solution is feasible, we have
-
-$$
-\begin{aligned}
-q_k(x_k,u_k) &= l_k(x_k,u_k) + V_{k+1}(x_{k+1}) \\
-\xi_k^TP_k\xi_k+2p_k^T\xi_k+p_{0_k} &= \xi_k^TD_k\xi_k + 2d_k^T\xi_k+d_{0_k} + V_{k+1}(x_{k+1}) \\ 
-\end{aligned}
-$$
-
-compute $V_{k+1}(x_{k+1})$ 
-
-$$
-\begin{aligned}
-V_{k+1}(x_{k+1}) &= {x_{k+1}}^TZ_{k+1}x_{k+1} + 2z_{x_{k+1}}^Tx_{k+1} + z_{0_{k+1}}\\
-&=(A_dx_k+B_du_k+C_d)^TZ_{k+1}(A_dx_k+B_du_k+C_d) + 2z_{x_{k+1}}^T(A_dx_k+B_du_k+C_d) + z_{0_{k+1}}\\
-&\text{let $F_d = \begin{bmatrix} A_d & B_d \end{bmatrix}$, and 
-           ${\xi_k}^T = \begin{bmatrix} x_k^T & u_k^T \end{bmatrix}$} \\
-&= (F_d\xi_k+C_d)^TZ_{k+1}(F_d\xi_k+C_d)+2z_{x_{k+1}}^T(F_d\xi_k+C_d)+z_{0_{k+1}}\\
-&= {\xi_k}^TF_d^TZ_{k+1}F_d\xi_k+2(F_d^TZ_{k+1}C_d+F_d^Tz_{x_{k+1}})^T\xi_k+(C_d^TZ_{k+1}C_d+2z_{x_{k+1}}^TC_d+z_{0_{k+1}})
-\end{aligned}
-$$
-
-substitute back to q-function, we have
-
-$$
-\begin{aligned}
-\xi_k^TP_k\xi_k+2p_k^T\xi_k+p_{0_k} 
-&= \xi_k^TD_k\xi_k + 2d_k^T\xi_k+d_{0_k} + V_{k+1}(x_{k+1}) \\
-\xi_k^TP_k\xi_k+2p_k^T\xi_k+p_{0_k} 
-&= \xi_k^TD_k\xi_k + 2d_k^T\xi_k+d_{0_k} + 
-{\xi_k}^TF_d^TZ_{k+1}F_d\xi_d+2(F_d^TZ_{k+1}C_d+F_d^Tz_{x_{k+1}})^T\xi_k+z_{0_{k+1}}+2z_{x_{k+1}}^TC_d+C_dZ_{k+1}C_d\\
-&= \xi_k^T(D_k+F_d^TZ_{k+1}F_d)\xi_k+2(d_k+F_d^TZ_{k+1}C_d+F_d^Tz_{x_{k+1}})^T\xi_k+(d_{0_k}+C_d^TZ_{k+1}C_d+2z_{x_{k+1}}^TC_d+z_{0_{k+1}})
+q(\eta,\Delta \hat{u}) &= l(\eta,\Delta \hat{u}) + V(\eta_{k+1}) \\
+q(\eta,\Delta \hat{u}) &= l(x,u,\Delta u) + V(\widetilde{A}_d \eta + \widetilde{B}_d \Delta{\hat{u}}+\widetilde{w})\\
+\xi^TP\xi+2p^T\xi+p_{0} &= \xi^T D\xi+2d^T\xi+d_0 + (\widetilde{A}_d \eta + \widetilde{B}_d \Delta{\hat{u}}+\widetilde{w})^TZ_{k+1}(\widetilde{A}_d \eta + \widetilde{B}_d \Delta{\hat{u}}+\widetilde{w}) + 2z_{k+1}^T(\widetilde{A}_d \eta + \widetilde{B}_d \Delta{\hat{u}}+\widetilde{w})+z_{0_{k+1}}\\
+\xi^TP\xi+2p^T\xi+p_{0} &= \xi^T D\xi+2d^T\xi+d_0 + (F_d \xi+\widetilde{w})^TZ_{k+1}(F_d \xi+\widetilde{w}) + 2z_{k+1}^T(F_d \xi+\widetilde{w})+z_{0_{k+1}}\\
+& \qquad \text{where $F_d=\begin{bmatrix} \widetilde{A}_d & \widetilde{B}_d \end{bmatrix}$}\\
+\xi^TP\xi+2p^T\xi+p_{0} &= \xi^T D\xi+2d^T\xi+d_0 + (\xi^TF_d^TZ_{k+1}+\widetilde{w}^TZ_{k+1})(F_d \xi+\widetilde{w}) + 2(F_d^Tz_{k+1})^T \xi+2z_{k+1}^T\widetilde{w}+z_{0_{k+1}} \\
+\xi^TP\xi+2p^T\xi+p_{0} &= \xi^T D\xi+2d^T\xi+d_0 + (\xi^TF_d^TZ_{k+1}+\widetilde{w}^TZ_{k+1})(F_d \xi+\widetilde{w}) + 2(F_d^Tz_{k+1})^T\xi+2z_{k+1}^T\widetilde{w}+z_{0_{k+1}} \\
+\xi^TP\xi+2p^T\xi+p_{0} &= \xi^T D\xi+2d^T\xi+d_0 + \xi^TF_d^TZ_{k+1}F_d\xi+2(F_d^TZ_{k+1}\widetilde{w})^T\xi + \widetilde{w}^TZ_{k+1}\widetilde{w} + 2(F_d^Tz_{k+1})^T \xi+2z_{k+1}^T\widetilde{w}+z_{0_{k+1}} \\
+\xi^TP\xi+2p^T\xi+p_{0} &= \xi^T (D+F_d^TZ_{k+1}F_d)\xi+2(d+F_d^TZ_{k+1}\widetilde{w}+F_d^Tz_{k+1})^T\xi+ \widetilde{w}^TZ_{k+1}\widetilde{w}+2z_{k+1}^T\widetilde{w}+z_{0_{k+1}}+d_{0} \\
 \end{aligned}
 $$
 
@@ -270,9 +203,9 @@ Collect quadratic, linear and offset terms
 
 $$
 \begin{aligned}
-P_k &= D_k+F_d^TZ_{k+1}F_d \\
-p_k &= d_k+F_d^TZ_{k+1}C_d+F_d^Tz_{x_{k+1}}\\
-p_{0_k} &= d_{0_k}+C_d^TZ_{k+1}C_d+2z_{x_{k+1}}^TC_d+z_{0_{k+1}}
+P &= D+F_d^TZ_{k+1}F_d \\
+p &= d+F_d^TZ_{k+1}\widetilde{w}+F_d^Tz_{k+1} \\
+p_0 &= \widetilde{w}^TZ_{k+1}\widetilde{w}+2z_{k+1}^T\widetilde{w}+z_{0_{k+1}}+d_{0}
 \end{aligned}
 $$
 
@@ -280,13 +213,13 @@ quadratic coefficient
 
 $$
 \begin{aligned}
-P_k &= D_k+F_d^TZ_{k+1}F_d \\
-P_k &= \begin{bmatrix} Q_k & N_k \\ N_k^T & R_k \end{bmatrix} + 
-\begin{bmatrix}A_d^T\\B_d^T\end{bmatrix}Z_{k+1}\begin{bmatrix}A_d&B_d\end{bmatrix}\\
-P_k &= \begin{bmatrix} Q_k & N_k \\ N_k^T & R_k \end{bmatrix} + 
-\begin{bmatrix} A_d^TZ_{k+1}A_d & A_d^TZ_{k+1}B_d \\ B_d^TZ_{k+1}A_d & B_d^TZ_{k+1}B_d \end{bmatrix}\\
-P_k &= \begin{bmatrix} Q_k+A_d^TZ_{k+1}A_d & N_k+A_d^TZ_{k+1}B_d \\ N_k^T+B_d^TZ_{k+1}A_d & R_k+B_d^TZ_{k+1}B_d \end{bmatrix}\\
-\begin{bmatrix} P_{xx} & P_{xu} \\ P_{xu}^T & P_{uu} \end{bmatrix} &= \begin{bmatrix} Q_k+A_d^TZ_{k+1}A_d & N_k+A_d^TZ_{k+1}B_d \\ N_k^T+B_d^TZ_{k+1}A_d & R_k+B_d^TZ_{k+1}B_d \end{bmatrix}
+P &= D+F_d^TZ_{k+1}F_d \\
+P &= \begin{bmatrix} D_{\eta \eta} & 0_{(n_s + n_c) \cdot n_c} \\ 0_{n_c \cdot (n_s+n_c)} & S \end{bmatrix} + 
+\begin{bmatrix}\widetilde{A}_d^T\\\widetilde{B}_d^T\end{bmatrix}Z_{k+1}\begin{bmatrix}\widetilde{A}_d&\widetilde{B}_d\end{bmatrix}\\
+P &= \begin{bmatrix} D_{\eta \eta} & 0_{(n_s + n_c) \cdot n_c} \\ 0_{n_c \cdot (n_s+n_c)} & S \end{bmatrix} + 
+\begin{bmatrix} \widetilde{A}_d^TZ_{k+1}\widetilde{A}_d & \widetilde{A}_d^TZ_{k+1}\widetilde{B}_d \\ \widetilde{B}_d^TZ_{k+1}\widetilde{A}_d & \widetilde{B}_d^TZ_{k+1}\widetilde{B}_d \end{bmatrix}\\
+P &= \begin{bmatrix} D_{\eta \eta}+\widetilde{A}_d^TZ_{k+1}\widetilde{A}_d & \widetilde{A}_d^TZ_{k+1}\widetilde{B}_d \\ \widetilde{B}_d^TZ_{k+1}\widetilde{A}_d & S+\widetilde{B}_d^TZ_{k+1}\widetilde{B}_d \end{bmatrix}\\
+\begin{bmatrix} P_{xx} & P_{xu} \\ P_{xu}^T & P_{uu} \end{bmatrix} &= \begin{bmatrix} D_{\eta \eta}+\widetilde{A}_d^TZ_{k+1}\widetilde{A}_d & \widetilde{A}_d^TZ_{k+1}\widetilde{B}_d \\ \widetilde{B}_d^TZ_{k+1}\widetilde{A}_d & S+\widetilde{B}_d^TZ_{k+1}\widetilde{B}_d \end{bmatrix}
 \end{aligned}
 $$
 
@@ -294,26 +227,13 @@ linear coefficient
 
 $$
 \begin{aligned}
-p_k &= d_k+F_d^TZ_{k+1}C_d+F_d^Tz_{x_{k+1}}\\
-p_k &= \begin{bmatrix} -Q_kx_{r_k}-N_ku_{r_k}\\
--R_ku_{r_k}-N_k^Tx_{r_k}\end{bmatrix}+ \begin{bmatrix}A_d^T\\B_d^T\end{bmatrix}Z_{k+1}C_d+\begin{bmatrix}A_d^T\\B_d^T\end{bmatrix}z_{x_{k+1}}\\
-&= \begin{bmatrix} -Q_kx_{r_k}-N_ku_{r_k}\\
--R_ku_{r_k}-N_k^Tx_{r_k}\end{bmatrix}+\begin{bmatrix} A_d^TZ_{k+1}C_d \\ B_d^TZ_{k+1}C_d \end{bmatrix} + \begin{bmatrix} A_d^Tz_{x_{k+1}} \\ B_d^Tz_{x_{k+1}} \end{bmatrix} \\
-& = \begin{bmatrix} -Q_kx_{r_k}-N_ku_{r_k}+A_d^T(Z_{k+1}C_d+z_{x_{k+1}})\\
--R_ku_{r_k}-N_k^Tx_{r_k}+B_d^T(Z_{k+1}C_d+z_{x_{k+1}})\end{bmatrix} \\
-\begin{bmatrix} p_{x_k} \\ p_{u_k} \end{bmatrix}& = \begin{bmatrix} -Q_kx_{r_k}-N_ku_{r_k}+A_d^T(Z_{k+1}C_d+z_{x_{k+1}})\\
--R_ku_{r_k}-N_k^Tx_{r_k}+B_d^T(Z_{k+1}C_d+z_{x_{k+1}})\end{bmatrix} \\
-&=\begin{bmatrix} q_{x_k}+A_d^T(Z_{k+1}C_d+z_{x_{k+1}})\\
-r_{u_k}+B_d^T(Z_{k+1}C_d+z_{x_{k+1}})\end{bmatrix}
-\end{aligned}
-$$
-
-where
-
-$$
-\begin{aligned}
-q_{x_k} &= -Q_kx_{r_k}-N_ku_{r_k} \\
-r_{u_k} &= -R_ku_{r_k}-N_k^Tx_{r_k}
+p &= d+F_d^TZ_{k+1}\widetilde{w}+F_d^Tz_{k+1}\\
+p &= \begin{bmatrix} d_{\eta} \\ s \end{bmatrix} + \begin{bmatrix}\widetilde{A}_d^T\\\widetilde{B}_d^T\end{bmatrix}Z_{k+1}\widetilde{w}+\begin{bmatrix}\widetilde{A}_d^T\\\widetilde{B}_d^T\end{bmatrix}z_{x_{k+1}}\\
+&= \begin{bmatrix} d_{\eta} \\ s \end{bmatrix}+\begin{bmatrix} \widetilde{A}_d^TZ_{k+1}\widetilde{w} \\ \widetilde{B}_d^TZ_{k+1}\widetilde{w} \end{bmatrix} + \begin{bmatrix} \widetilde{A}_d^Tz_{x_{k+1}} \\ \widetilde{B}_d^Tz_{x_{k+1}} \end{bmatrix} \\
+& = \begin{bmatrix} d_{\eta}+\widetilde{A}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})\\
+s+\widetilde{B}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})\end{bmatrix} \\
+\begin{bmatrix} p_{x} \\ p_{u} \end{bmatrix}& = \begin{bmatrix} d_{\eta}+\widetilde{A}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})\\
+s+\widetilde{B}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})\end{bmatrix} 
 \end{aligned}
 $$
 
@@ -321,96 +241,64 @@ offset term
 
 $$
 \begin{aligned}
-p_{0_k} &= d_{0_k}+C_d^TZ_{k+1}C_d+2z_{x_{k+1}}^TC_d+z_{0_{k+1}}
+p_0 &= \widetilde{w}^TZ_{k+1}\widetilde{w}+2z_{k+1}^T\widetilde{w}+z_{0_{k+1}}+d_{0}
 \end{aligned}
 $$
 
 ## Expanding Recursion Equations with Optimal Policy
 
-The q-function at time step $t_k$ is
+The q-function and corresponding optimal policy(calculated in previous post) at time stamp $t_k$ is
 
 $$
 \begin{aligned}
 q_k(x_k,u_k) &= \xi_k^T P_k \xi_k + 2p_k^T\xi_k+p_{0_k} \\
 &= \begin{bmatrix} x_k^T & u_k^T \end{bmatrix}\begin{bmatrix} P_{xx} & P_{xu} \\ P_{ux} & P_{uu} \end{bmatrix} \begin{bmatrix} x_k \\ u_k \end{bmatrix} + 2\begin{bmatrix} p_{x_k}^T & p_{u_k}^T\end{bmatrix}\begin{bmatrix} x_k \\ u_k \end{bmatrix}+p_{0_k} \\
-&= x_k^TP_{xx}x_k+2x_k^TP_{xu}u_k+u_k^TP_{uu}u_k+2p_{x_k}^Tx_k+2p_{u_k}^Tu_k+p_{0_k}\\
+&= \eta^TP_{xx}\eta+2\eta^TP_{xu}\Delta \hat{u}+\Delta \hat{u}^TP_{uu}\Delta \hat{u}+2p_{x}^T\eta+2p_{u}^T\Delta \hat{u}+p_{0}\\
+\\
+\Delta \hat{u}^{\ast} &= -P_{uu}^{-1}P_{ux}\eta-P_{uu}^{-1}p_{u}  \\
+&= K\eta+k \\
+\\
+K &= -P_{uu}^{-1}P_{ux}\\
+k &= -P_{uu}^{-1}p_{u}
 \end{aligned}
 $$
 
-compute optimal control at time step $t_k$ for q-function
+substitute the optimal policy $\Delta \hat{u}^{\ast}$ into q-function to extract value function,with inductive hypothesis,we have
 
 $$
 \begin{aligned}
-\frac{\partial q_k(x_k,u_k)}{\partial u_k} &= 2P_{uu}u_k^{\ast}+2P_{ux}x_k+2p_{u_k} = 0\\
-&= P_{uu}u_k^{\ast}+P_{ux}x_k+p_{u_k} = 0 \\
-\\
-u_k^{\ast} &= -P_{uu}^{-1}P_{ux}x_k-P_{uu}^{-1}p_{u_k}  \\
-&= K_kx_k+k_k \\
-\\
-K_k &= -P_{uu}^{-1}P_{ux}\\
-k_k &= -P_{uu}^{-1}p_{u_k}
+V(\eta) &= q_k(\eta,\Delta \hat{x}^{\ast}) \\ &= \eta^T(P_{xx}+2P_{xu}K+K^TP_{uu}K)\eta + 2(P_{xu}k+K^TP_{uu}k+K^Tp_{u}+p_{x})^T\eta+(k^TP_{uu}k+2p_{u}^Tk+p_{0})\\
+&= \eta^TZ\eta_k+2z^T\eta+z_{0}
 \end{aligned}
 $$
 
-substitute the optimal policy $u_k^{\ast}$ into q-function
+expanding the recursion equations, we arrive final discrete-time iterative riccati equations
 
 $$
 \begin{aligned}
-q_k(x_k,u_k^{\ast}) &=  x_k^TP_{xx}x_k+2x_k^TP_{xu}u_k^{\ast}+{u_k^{\ast}}^TP_{uu}u_k^{\ast}+2p_{x_k}^Tx_k+2p_{u_k}^Tu_k^{\ast}+p_{0_k}\\
-&= x_k^TP_{xx}x_k + 2x_k^TP_{xu}(K_kx_k+k_k) + (x_k^TK_k^T+k_k^T)P_{uu}(K_kx_k+k_k)+2p_{x_k}^Tx_k+2p_{u_k}^T(K_kx_k+k_k)+p_{0_k}\\
-&=x_k^TP_{xx}x_k + 2x_k^TP_{xu}K_kx_k+ 2x_k^TP_{xu}k_k + x_k^TK_k^TP_{uu}K_kx_k+2k_k^TP_{uu}K_kx_k+k_k^TP_{uu}k_k +2p_{x_k}^Tx_k+2p_{u_k}^TK_kx_k+2p_{u_k}^Tk_k+p_{0_k}\\
-&=x_k^T(P_{xx}+2P_{xu}K_k+K_k^TP_{uu}K_k)x_k + 2(P_{xu}k_k+K_k^TP_{uu}k_k+K_k^Tp_{u_k}+p_{x_k})^Tx_k+(k_k^TP_{uu}k_k+2p_{u_k}^Tk_k+p_{0_k})
+Z &= P_{xx} - P_{xu}P_{uu}^{-1}P_{ux} \\
+&= D_{\eta \eta}+\widetilde{A}_d^TZ_{k+1}\widetilde{A}_d - (\widetilde{B}_d^TZ_{k+1}\widetilde{A}_d)^T(S+\widetilde{B}_d^TZ_{k+1}\widetilde{B}_d)^{-1}(\widetilde{B}_d^TZ_{k+1}\widetilde{A}_d)
+\\
+z &=-P_{xu}P_{uu}^{-1}p_{u}+p_{x}\\
+&= (\widetilde{B}_d^TZ_{k+1}\widetilde{A}_d)^T(S+\widetilde{B}_d^TZ_{k+1}\widetilde{B}_d)^{-1}[s+\widetilde{B}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})]+[d_{\eta}+\widetilde{A}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})]
+\\
+z_{0} &=-p_{u}^TP_{uu}^{-1}p_{u}+p_{0}\\
+&= -[s+\widetilde{B}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})]^T(S+\widetilde{B}_d^TZ_{k+1}\widetilde{B}_d)^{-1}[s+\widetilde{B}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})]+[\widetilde{w}^TZ_{k+1}\widetilde{w}+2z_{k+1}^T\widetilde{w}+z_{0_{k+1}}+d_{0}]
 \end{aligned}
 $$
 
-q-function with optimal policy is exactly the value function, with inductive hypothesis, we have
+The optimal policy is
 
 $$
 \begin{aligned}
-V_k(x_k) = q_k(x_k,u_k^{\ast}) &= x_k^T(P_{xx}+2P_{xu}K_k+K_k^TP_{uu}K_k)x_k + 2(P_{xu}k_k+K_k^TP_{uu}k_k+K_k^Tp_{u_k}+p_{x_k})^Tx_k+(k_k^TP_{uu}k_k+2p_{u_k}^Tk_k+p_{0_k})\\
-&= x_k^TZ_kx_k+2z_k^Tx_k+z_{0_k} \\
+u^{\ast} &= u_l + \hat{u}^{\ast } \\ 
+&= u_l + \hat{u}_{k-1}^{\ast} + \Delta \hat{u}^{\ast}\\
 \\
-Z_k &= P_{xx}+2P_{xu}K_k+K_k^TP_{uu}K_k\\
-&= P_{xx}+2P_{xu}(-P_{uu}^{-1}P_{ux})+P_{xu}P_{uu}^{-1}P_{uu}P_{uu}P_{ux} \\
-&= P_{xx} - 2P_{xu}P_{uu}^{-1}P_{ux}+P_{xu}P_{uu}P_{ux} \\
-&= P_{xx} - P_{xu}P_{uu}^{-1}P_{ux} \\
+\Delta \hat{u}^{\ast} &= K\eta+k \\
 \\
-z_k &= P_{xu}k_k+K_k^TP_{uu}k_k+K_k^Tp_{u_k}+p_{x_k} \\
-&= -P_{xu}P_{uu}^{-1}p_{u_k}+P_{xu}P_{uu}^{-1}P_{uu}P_{uu}^{-1}p_{u_k}-P_{xu}P_{uu}^{-1}p_{u_k}+p_{x_k}  \\
-&= -P_{xu}P_{uu}^{-1}p_{u_k}+P_{xu}P_{uu}^{-1}p_{u_k}-P_{xu}P_{uu}^{-1}p_{u_k}+p_{x_k}\\
-&=-P_{xu}P_{uu}^{-1}p_{u_k}+p_{x_k}\\
-\\
-z_{0_k} &= k_k^TP_{uu}k_k+2p_{u_k}^Tk_k+p_{0_k} \\
-&= p_{u_k}^TP_{uu}^{-1}P_{uu}P_{uu}^{-1}p_{u_k} - 2p_{u_k}^TP_{uu}^{-1}p_{u_k}+p_{0_k}\\
-&=p_{u_k}^TP_{uu}^{-1}p_{u_k} - 2p_{u_k}^TP_{uu}^{-1}p_{u_k}+p_{0_k}\\
-&=-p_{u_k}^TP_{uu}^{-1}p_{u_k}+p_{0_k}
-\end{aligned}
-$$
-
-now, expanding the recursion equations, we arrive final discrete-time iterative riccati equations
-
-$$
-\begin{aligned}
-Z_k &= P_{xx} - P_{ux}^TP_{uu}^{-1}P_{ux} \\
-&= Q_k+A_d^TZ_{k+1}A_d - (N_k^T+B_d^TZ_{k+1}A_d)^T(R_k+B_d^TZ_{k+1}B_d)^{-1}(N_k^T+B_d^TZ_{k+1}A_d) \\
-\\
-z_k &=-P_{xu}P_{uu}^{-1}p_{u_k}+p_{x_k}\\
-&= -(N_k^T+B_d^TZ_{k+1}A_d)^T(R_k+B_d^TZ_{k+1}B_d)^{-1}[r_{u_k}+B_d^T(Z_{k+1}C_d+z_{x_{k+1}})] + [q_{x_k}+A_d^T(Z_{k+1}C_d+z_{x_{k+1}})] \\
-\\
-z_{0_k} &=-p_{u_k}^TP_{uu}^{-1}p_{u_k}+p_{0_k}\\
-&= -[r_{u_k}+B_d^T(Z_{k+1}C_d+z_{x_{k+1}})]^T(R_k+B_d^TZ_{k+1}B_d)^{-1}[r_{u_k}+B_d^T(Z_{k+1}C_d+z_{x_{k+1}})]+d_{0_k}+C_d^TZ_{k+1}C_d+2z_{x_{k+1}}^TC_d+z_{0_{k+1}}
-\end{aligned}
-$$
-
-and the optimal policy is
-
-$$
-\begin{aligned}
-u_k^{\ast} &= K_kx_k+k_k \\
-\\
-K_k &= -P_{uu}^{-1}P_{ux} \\
-&= -(R_k+B_d^TZ_{k+1}B_d)^{-1}(N_k^T+B_d^TZ_{k+1}A_d) \\
-k_k &= -P_{uu}^{-1}p_{u_k} \\
-&= -(R_k+B_d^TZ_{k+1}B_d)^{-1}(r_{u_k}+B_d^T(Z_{k+1}C_d+z_{x_{k+1}}))
+K &= -P_{uu}^{-1}P_{ux} \\
+&= -(S+\widetilde{B}_d^TZ_{k+1}\widetilde{B}_d)^{-1}(\widetilde{B}_d^TZ_{k+1}\widetilde{A}_d) \\
+k &= -P_{uu}^{-1}p_{u} \\
+&= -(S+\widetilde{B}_d^TZ_{k+1}\widetilde{B}_d)^{-1}[s+\widetilde{B}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})] \\
 \end{aligned}
 $$

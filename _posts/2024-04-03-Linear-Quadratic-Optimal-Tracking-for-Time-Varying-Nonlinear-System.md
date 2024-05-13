@@ -279,7 +279,7 @@ d_k &= \begin{bmatrix} -Q_kx_{r_k}-N_ku_{r_k}\\
 \end{aligned}
 $$
 
-the instantaneous cost at time step $t_k$ could be further simplified to a quadratic function of augment state $\xi_k$
+the instantaneous cost at time stamp $t_k$ could be further simplified to a quadratic function of augment state $\xi_k$
 
 $$
 \begin{aligned}
@@ -312,7 +312,7 @@ V_k(x_k) &= J_k^{\ast}(x_k,U^{\ast})\\
 \end{aligned}
 $$
 
-Next, for each time step $t_k$, q-function(reinforcement learning) could be defined as
+Next, for each time stamp $t_k$, q-function(reinforcement learning) could be defined as
 
 $$
 \begin{aligned}
@@ -451,7 +451,7 @@ $$
 
 ## Expanding Recursion Equations with Optimal Policy
 
-The q-function at time step $t_k$ is
+The q-function at time stamp $t_k$ is
 
 $$
 \begin{aligned}
@@ -461,7 +461,7 @@ q_k(x_k,u_k) &= \xi_k^T P_k \xi_k + 2p_k^T\xi_k+p_{0_k} \\
 \end{aligned}
 $$
 
-compute optimal control at time step $t_k$ for q-function
+compute optimal control at time stamp $t_k$ for q-function
 
 $$
 \begin{aligned}
@@ -541,6 +541,6 @@ $$
 
 ## What's more?
 
-LQR operates with maverick disregard for changes in the future. Careless of the consequences, it optimizes assuming the linear dynamics approximated at the current time step hold for all time. Well, that's not ideal. So how to address such issues?Fortunately, a sequential optimization could be carried out by utilizing iterative LQR algorithm. 
+LQR operates with maverick disregard for changes in the future. Careless of the consequences, it optimizes assuming the linear dynamics approximated at the current time stamp hold for all time. Well, that's not ideal. So how to address such issues?Fortunately, a sequential optimization could be carried out by utilizing iterative LQR algorithm. 
 
 To be continued...
