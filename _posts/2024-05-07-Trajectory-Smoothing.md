@@ -173,13 +173,28 @@ V(\eta) &= \eta^TZ\eta + 2z^T\eta+z_{0}
 \end{aligned}
 $$
 
-for base case, we have
+for base case, the terminal cost is defined as
 
 $$
 \begin{aligned}
-P &= D_{\xi_N} \\
-p &= d_{\xi_N} \\
-p_0 &= d_{0_{\xi_N}}
+l_f(x_f,u_f) &= (x-x_{rf})^TQ_f(x-x_{rf}) + (u-u_{rf})^TR_f(u-u_{rf}) \\
+&= (\hat{x}-\hat{x}_{rf})^TQ_f(\hat{x}-\hat{x}_{rf}) + (\hat{u}-\hat{u}_{rf})^TR_f(\hat{u}-\hat{u}_{rf}) \\
+&= \hat{x}^TQ_f\hat{x}+2(\underbrace{-Q_f\hat{x}_{rf}}_{q_{x_f}})^T\hat{x}+\underbrace{\hat{x}_{rf}^TQ_f\hat{x}_{rf}}_{q_{0f}}+\hat{u}^TR_f\hat{u}+2(\underbrace{-R_f\hat{u}_{rf}}_{r_{u_f}})^T\hat{u}+\underbrace{\hat{u}_{rf}^TR_f\hat{u}_{rf}}_{r_{0f}}\\
+&= \begin{bmatrix}\hat{x} \\ \hat{u} \end{bmatrix}^T \underbrace{\begin{bmatrix} Q_f & 0_{n_s \cdot n_c} \\ 0_{n_c \cdot n_s} & R_f \end{bmatrix}}_{D_{\eta_f\eta_f}} \underbrace{\begin{bmatrix}\hat{x} \\ \hat{u} \end{bmatrix}}_{\eta} + 2 {\underbrace{\begin{bmatrix} q_{x_f} \\ r_{u_f} \end{bmatrix}}_{d_{\eta_f}}}^T \begin{bmatrix} \hat{x} \\ \hat{u} \end{bmatrix} +\underbrace{q_{0f}+r_{0f}}_{d_{0_{\eta_f}}}\\
+q(\eta,\Delta \hat{u}) = l(\eta,\Delta \hat{u}) &= \eta ^T D_{\eta_f \eta_f} \eta + 2 d_{\eta_f}^T \eta + d_{0_{\eta_f}} \\
+&= \begin{bmatrix} \eta \\ \Delta \hat{u} \end{bmatrix}^T\underbrace{\begin{bmatrix} D_{\eta_f \eta_f} & 0_{(n_s + n_c) \cdot n_c} \\ 0_{n_c \cdot (n_s+n_c)} & 0_{n_c \cdot n_c} \end{bmatrix}}_{D_f} \underbrace{\begin{bmatrix} \eta \\ \Delta \hat{u} \end{bmatrix}}_{\xi} + 2{\underbrace{\begin{bmatrix} d_{\eta_f} \\ 0_{n_c \cdot 1} \end{bmatrix}}_{d_f}}^T\begin{bmatrix} \eta \\ \Delta \hat{u} \end{bmatrix} + \underbrace{d_{0_{\eta_f}}}_{d_{0f}}\\
+&= \xi^T D_f \xi+2d_f^T\xi+d_{0f} \\
+&= \xi^TP\xi+2p^T\xi+p_{0}
+\end{aligned}
+$$
+
+clearly 
+
+$$
+\begin{aligned}
+P &= D_f \\
+p &= d_f \\
+p_0 &= d_{0f}
 \end{aligned}
 $$
 
@@ -291,10 +306,11 @@ The optimal policy is
 
 $$
 \begin{aligned}
-u^{\ast} &= u_l + \hat{u}^{\ast } \\ 
-&= u_l + \hat{u}_{k-1}^{\ast} + \Delta \hat{u}^{\ast}\\
-\\
 \Delta \hat{u}^{\ast} &= K\eta+k \\
+\\
+u^{\ast} &= u_{k-1}^{\ast} + \Delta u\\ 
+&= u_{k-1}^{\ast} + (\Delta \hat{u}^{\ast}+ \Delta u_l)\\
+&= u_{k-1}^{\ast} + \Delta u_l + K\eta+k\\
 \\
 K &= -P_{uu}^{-1}P_{ux} \\
 &= -(S+\widetilde{B}_d^TZ_{k+1}\widetilde{B}_d)^{-1}(\widetilde{B}_d^TZ_{k+1}\widetilde{A}_d) \\
