@@ -2,7 +2,7 @@
 title: Robust Model Reference Adaptive Control
 date: 2024-01-02 12:03:00 +0800
 categories: [Adaptive Control]
-tags: [mrac]     # TAG names should always be lowercase
+tags: [mrac]
 author: <hOrange>
 math: true
 comments: true

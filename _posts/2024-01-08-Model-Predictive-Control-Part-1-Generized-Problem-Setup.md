@@ -2,7 +2,7 @@
 title: Model Predictive Control Part 1. Generized Problem Setup
 date: 2024-01-08 12:03:00 +0800
 categories: [Optimal Control]
-tags: [mpc]     # TAG names should always be lowercase
+tags: [mpc]
 author: <hOrange>
 math: true
 comments: true

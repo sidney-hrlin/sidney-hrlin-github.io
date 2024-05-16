@@ -2,7 +2,7 @@
 title: Linear Quadratic Optimal Tracking For Time Varying Non-linear System
 date: 2024-04-03 12:03:00 +0800
 categories: [Optimal Control]
-tags: [lqr servo]     # TAG names should always be lowercase
+tags: [lqr servo]
 author: <hOrange>
 math: true
 comments: true
@@ -466,7 +466,7 @@ compute optimal control at time stamp $t_k$ for q-function
 $$
 \begin{aligned}
 \frac{\partial q_k(x_k,u_k)}{\partial u_k} &= 2P_{uu}u_k^{\ast}+2P_{ux}x_k+2p_{u_k} = 0\\
-&= P_{uu}u_k^{\ast}+P_{ux}x_k+p_{u_k} = 0 \\
+0 &= P_{uu}u_k^{\ast}+P_{ux}x_k+p_{u_k}\\
 \\
 u_k^{\ast} &= -P_{uu}^{-1}P_{ux}x_k-P_{uu}^{-1}p_{u_k}  \\
 &= K_kx_k+k_k \\
@@ -515,14 +515,14 @@ now, expanding the recursion equations, we arrive final discrete-time iterative 
 
 $$
 \begin{aligned}
-Z_k &= P_{xx} - P_{ux}^TP_{uu}^{-1}P_{ux} \\
+Z_k&=P_{xx}-P_{ux}^TP_{uu}^{-1}P_{ux} \\
 &= Q_k+A_d^TZ_{k+1}A_d - (N_k^T+B_d^TZ_{k+1}A_d)^T(R_k+B_d^TZ_{k+1}B_d)^{-1}(N_k^T+B_d^TZ_{k+1}A_d) \\
 \\
-z_k &=-P_{xu}P_{uu}^{-1}p_{u_k}+p_{x_k}\\
-&= -(N_k^T+B_d^TZ_{k+1}A_d)^T(R_k+B_d^TZ_{k+1}B_d)^{-1}[r_{u_k}+B_d^T(Z_{k+1}C_d+z_{x_{k+1}})] + [q_{x_k}+A_d^T(Z_{k+1}C_d+z_{x_{k+1}})] \\
+z_k&=p_{x_k}-P_{xu}P_{uu}^{-1}p_{u_k}\\
+&= [q_{x_k}+A_d^T(Z_{k+1}C_d+z_{x_{k+1}})]-(N_k^T+B_d^TZ_{k+1}A_d)^T(R_k+B_d^TZ_{k+1}B_d)^{-1}[r_{u_k}+B_d^T(Z_{k+1}C_d+z_{x_{k+1}})]\\
 \\
-z_{0_k} &=-p_{u_k}^TP_{uu}^{-1}p_{u_k}+p_{0_k}\\
-&= -[r_{u_k}+B_d^T(Z_{k+1}C_d+z_{x_{k+1}})]^T(R_k+B_d^TZ_{k+1}B_d)^{-1}[r_{u_k}+B_d^T(Z_{k+1}C_d+z_{x_{k+1}})]+d_{0_k}+C_d^TZ_{k+1}C_d+2z_{x_{k+1}}^TC_d+z_{0_{k+1}}
+z_{0_k}&=p_{0_k}-p_{u_k}^TP_{uu}^{-1}p_{u_k}\\
+&= (d_{0_k}+C_d^TZ_{k+1}C_d+2z_{x_{k+1}}^TC_d+z_{0_{k+1}})-[r_{u_k}+B_d^T(Z_{k+1}C_d+z_{x_{k+1}})]^T(R_k+B_d^TZ_{k+1}B_d)^{-1}[r_{u_k}+B_d^T(Z_{k+1}C_d+z_{x_{k+1}})]
 \end{aligned}
 $$
 

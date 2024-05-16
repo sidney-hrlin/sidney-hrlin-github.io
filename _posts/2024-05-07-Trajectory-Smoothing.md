@@ -1,8 +1,8 @@
 ---
-title: Draft - Trajectory Smoothing
+title: Trajectory Smoothing
 date: 2024-05-07 12:03:00 +0800
-categories: [draft]
-tags: [draft]     # TAG names should always be lowercase
+categories: [Optimal Control]
+tags: [lqr servo]
 author: <hOrange>
 math: true
 comments: true
@@ -10,11 +10,8 @@ mermaid: true
 image: /assets/2024-05-07-Trajectory-Smoothing.assets/trajectory_smoothing.jpg
 ---
 
-> *This is post is still in draft stage!*
-{: .prompt-warning }
-
-## Error State Model Derivation
-Given a time-varying non-linear continuous system 
+## Error State Incremental Trajectory Model Derivation
+Starting with a time-varying non-linear trajectory dynamics
 
 $$
 \dot{x} = f(t,x,u)
@@ -262,13 +259,15 @@ $$
 
 ## Expanding Recursion Equations with Optimal Policy
 
-The q-function and corresponding optimal policy(calculated in previous post) at time stamp $t_k$ is
+The optimal policy could be derived by taking partial derivative of q-function
 
 $$
 \begin{aligned}
-q_k(x_k,u_k) &= \xi_k^T P_k \xi_k + 2p_k^T\xi_k+p_{0_k} \\
-&= \begin{bmatrix} x_k^T & u_k^T \end{bmatrix}\begin{bmatrix} P_{xx} & P_{xu} \\ P_{ux} & P_{uu} \end{bmatrix} \begin{bmatrix} x_k \\ u_k \end{bmatrix} + 2\begin{bmatrix} p_{x_k}^T & p_{u_k}^T\end{bmatrix}\begin{bmatrix} x_k \\ u_k \end{bmatrix}+p_{0_k} \\
+q(\eta,\Delta \hat{u}) &= \begin{bmatrix} \eta \\ \Delta \hat{u} \end{bmatrix}^T\begin{bmatrix} P_{xx} & P_{xu} \\ P_{ux} & P_{uu} \end{bmatrix} \begin{bmatrix} \eta \\ \Delta \hat{u} \end{bmatrix} + 2\begin{bmatrix} p_x \\ p_u\end{bmatrix}^T\begin{bmatrix} \eta \\ \Delta \hat{u} \end{bmatrix}+p_{0} \\
 &= \eta^TP_{xx}\eta+2\eta^TP_{xu}\Delta \hat{u}+\Delta \hat{u}^TP_{uu}\Delta \hat{u}+2p_{x}^T\eta+2p_{u}^T\Delta \hat{u}+p_{0}\\
+\\
+\frac{\partial q(\eta,\Delta \hat{u})}{\partial \Delta \hat{u}} &= 2P_{uu}\Delta \hat{u}^{\ast}+2P_{ux}\eta+2p_{u} = 0\\
+0 &= P_{uu}\Delta \hat{u}^{\ast}+P_{ux}\eta+p_{u} \\
 \\
 \Delta \hat{u}^{\ast} &= -P_{uu}^{-1}P_{ux}\eta-P_{uu}^{-1}p_{u}  \\
 &= K\eta+k \\
@@ -282,7 +281,9 @@ substitute the optimal policy $\Delta \hat{u}^{\ast}$ into q-function to extract
 
 $$
 \begin{aligned}
-V(\eta) &= q_k(\eta,\Delta \hat{x}^{\ast}) \\ &= \eta^T(P_{xx}+2P_{xu}K+K^TP_{uu}K)\eta + 2(P_{xu}k+K^TP_{uu}k+K^Tp_{u}+p_{x})^T\eta+(k^TP_{uu}k+2p_{u}^Tk+p_{0})\\
+V(\eta) &= q(\eta,\Delta \hat{x}^{\ast}) \\ 
+&= \eta^T(P_{xx}+2P_{xu}K+K^TP_{uu}K)\eta + 2(P_{xu}k+K^TP_{uu}k+K^Tp_{u}+p_{x})^T\eta+(k^TP_{uu}k+2p_{u}^Tk+p_{0})\\
+&= \eta^T(P_{xx}-P_{xu}P_{uu}^{-1}P_{ux})\eta + 2(p_{x}-P_{xu}P_{uu}^{-1}p_{u})^T\eta+(p_{0}-p_{u}^TP_{uu}^{-1}p_{u})\\
 &= \eta^TZ\eta_k+2z^T\eta+z_{0}
 \end{aligned}
 $$
@@ -291,14 +292,14 @@ expanding the recursion equations, we arrive final discrete-time iterative ricca
 
 $$
 \begin{aligned}
-Z &= P_{xx} - P_{xu}P_{uu}^{-1}P_{ux} \\
-&= D_{\eta \eta}+\widetilde{A}_d^TZ_{k+1}\widetilde{A}_d - (\widetilde{B}_d^TZ_{k+1}\widetilde{A}_d)^T(S+\widetilde{B}_d^TZ_{k+1}\widetilde{B}_d)^{-1}(\widetilde{B}_d^TZ_{k+1}\widetilde{A}_d)
+Z &= P_{xx}-P_{xu}P_{uu}^{-1}P_{ux} \\
+&= (D_{\eta \eta}+\widetilde{A}_d^TZ_{k+1}\widetilde{A}_d) - (\widetilde{B}_d^TZ_{k+1}\widetilde{A}_d)^T(S+\widetilde{B}_d^TZ_{k+1}\widetilde{B}_d)^{-1}(\widetilde{B}_d^TZ_{k+1}\widetilde{A}_d)
 \\
-z &=-P_{xu}P_{uu}^{-1}p_{u}+p_{x}\\
-&= (\widetilde{B}_d^TZ_{k+1}\widetilde{A}_d)^T(S+\widetilde{B}_d^TZ_{k+1}\widetilde{B}_d)^{-1}[s+\widetilde{B}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})]+[d_{\eta}+\widetilde{A}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})]
+z &= p_{x}-P_{xu}P_{uu}^{-1}p_{u}\\
+&= [d_{\eta}+\widetilde{A}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})]-(\widetilde{B}_d^TZ_{k+1}\widetilde{A}_d)^T(S+\widetilde{B}_d^TZ_{k+1}\widetilde{B}_d)^{-1}[s+\widetilde{B}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})]
 \\
-z_{0} &=-p_{u}^TP_{uu}^{-1}p_{u}+p_{0}\\
-&= -[s+\widetilde{B}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})]^T(S+\widetilde{B}_d^TZ_{k+1}\widetilde{B}_d)^{-1}[s+\widetilde{B}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})]+[\widetilde{w}^TZ_{k+1}\widetilde{w}+2z_{k+1}^T\widetilde{w}+z_{0_{k+1}}+d_{0}]
+z_{0} &= p_{0}-p_{u}^TP_{uu}^{-1}p_{u}\\
+&= [d_{0}+\widetilde{w}^TZ_{k+1}\widetilde{w}+2z_{k+1}^T\widetilde{w}+z_{0_{k+1}}]-[s+\widetilde{B}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})]^T(S+\widetilde{B}_d^TZ_{k+1}\widetilde{B}_d)^{-1}[s+\widetilde{B}_d^T(Z_{k+1}\widetilde{w}+z_{x_{k+1}})]
 \end{aligned}
 $$
 
@@ -308,7 +309,7 @@ $$
 \begin{aligned}
 \Delta \hat{u}^{\ast} &= K\eta+k \\
 \\
-u^{\ast} &= u_{k-1}^{\ast} + \Delta u\\ 
+u^{\ast} &= u_{k-1}^{\ast} + \Delta u^{\ast}\\ 
 &= u_{k-1}^{\ast} + (\Delta \hat{u}^{\ast}+ \Delta u_l)\\
 &= u_{k-1}^{\ast} + \Delta u_l + K\eta+k\\
 \\

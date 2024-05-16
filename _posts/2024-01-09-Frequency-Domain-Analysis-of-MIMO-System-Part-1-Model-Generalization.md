@@ -2,6 +2,7 @@
 title: Frequency Domain Analysis of MIMO System Part 1. Model Generalization
 date: 2024-01-09 12:03:00 +0800
 categories: [Frequency Domain Analysis]
+tags: [state-space modeling]
 author: <hOrange>
 math: true
 comments: true
