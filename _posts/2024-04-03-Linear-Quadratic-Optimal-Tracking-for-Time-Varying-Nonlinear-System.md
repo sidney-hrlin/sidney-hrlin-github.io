@@ -3,7 +3,7 @@ title: Linear Quadratic Optimal Tracking For Time Varying Non-linear System
 date: 2024-04-03 12:03:00 +0800
 categories: [Optimal Control]
 tags: [lqr servo]
-author: <hOrange>
+author: Sidney Lin
 math: true
 comments: true
 mermaid: true

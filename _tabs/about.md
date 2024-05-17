@@ -6,7 +6,10 @@ order: 4
 
 > --- A Control Engineer in Stealth Mode ---
 {: .prompt-info }
-
-一期一会,会者定离.
-
+<br>
+<center>
+<font size=5 >
+一期一会,会者定离.<br>
 难得一面,世当珍惜.
+</font>
+</center>

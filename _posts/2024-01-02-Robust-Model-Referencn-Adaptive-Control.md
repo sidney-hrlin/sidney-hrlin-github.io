@@ -3,7 +3,7 @@ title: Robust Model Reference Adaptive Control
 date: 2024-01-02 12:03:00 +0800
 categories: [Adaptive Control]
 tags: [mrac]
-author: <hOrange>
+author: Sidney Lin
 math: true
 comments: true
 mermaid: true

@@ -3,7 +3,7 @@ title: Frequency Domain Analysis of MIMO System Part 4. Stanley Controller Desig
 date: 2024-01-11 12:03:00 +0800
 categories: [Frequency Domain Analysis]
 tags: [stanley controller]
-author: <hOrange>
+author: Sidney Lin
 math: true
 comments: true
 mermaid: true

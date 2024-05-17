@@ -3,7 +3,7 @@ title: Trajectory Smoothing
 date: 2024-05-07 12:03:00 +0800
 categories: [Optimal Control]
 tags: [lqr servo]
-author: <hOrange>
+author: Sidney Lin
 math: true
 comments: true
 mermaid: true

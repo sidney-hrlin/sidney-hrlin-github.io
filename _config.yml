@@ -21,9 +21,7 @@ title: Sidney's Control Space # the main title
 tagline: a blog about my journey in control engineering # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  Step into the world of control engineering with my personal technical blog. 
-  Join me on a journey as we navigate the complexities of control systems, offering invaluable insights, expert tips, and professional perspectives. 
-  From foundational principles to cutting-edge techniques, let's unravel the intricacies of feedback loops, optimal control, adaptive strategies, and more, together.
+  Explore the domain of control engineering with my personal blog. From foundational principles to real-world practices, let's delve into topics of feedback loops, optimal control, adaptive strategies, and more, together.
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.

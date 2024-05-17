@@ -3,7 +3,7 @@ title: Model Predictive Control Part 1. Generized Problem Setup
 date: 2024-01-08 12:03:00 +0800
 categories: [Optimal Control]
 tags: [mpc]
-author: <hOrange>
+author: Sidney Lin
 math: true
 comments: true
 mermaid: true
