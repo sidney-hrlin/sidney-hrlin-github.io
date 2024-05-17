@@ -7,9 +7,8 @@ lang: zh
 
 > --- A Control Engineer in Stealth Mode ---
 {: .prompt-info }
-<br>
 <center>
-<font face="STKaiti" size=5 >
+<font face="Ma Shan Zheng" size=5 >
 一期一会，会者定离。<br>
 难得一面，世当珍惜。
 </font>
