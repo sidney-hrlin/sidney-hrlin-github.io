@@ -16,12 +16,14 @@ timezone: Asia/Shanghai
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Sidney Lin # the main title
+title: Orange's Control Space # the main title
 
-tagline:  Orange's Control Space # it will display as the sub-title
+tagline: a blog about my journey in control engineering # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  My personal technical blog.
+  Step into the world of control engineering with my personal technical blog. 
+  Join me on a journey as we navigate the complexities of control systems, offering invaluable insights, expert tips, and professional perspectives. 
+  From foundational principles to cutting-edge techniques, let's unravel the intricacies of feedback loops, optimal control, adaptive strategies, and more, together.
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -36,7 +38,7 @@ github:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Sidney Lin
+  name: Sidney's Control 
   email: sidney.hrlin@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
